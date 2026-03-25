@@ -12,8 +12,6 @@ import { ContactForm } from "@/components/ContactForm";
 import { AvailabilityStrip } from "@/components/AvailabilityStrip";
 import { services, testimonials, events, whyBook } from "@/data/content";
 import { upcomingEvents } from "@/data/eventsCalendar";
-import { HomeMusicProvider } from "@/components/music/HomeMusicProvider";
-import { FloatingMusicPlayer } from "@/components/music/FloatingMusicPlayer";
 import { MusicPlaylist } from "@/components/sections/MusicPlaylist";
 import { site, buildKeywords } from "@/lib/site";
 import type { Metadata } from "next";
@@ -30,15 +28,9 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const latestMixUrl =
-    process.env.NEXT_PUBLIC_LATEST_MIX_URL ?? process.env.NEXT_PUBLIC_MIX_DEMO_URL ?? null;
-  const latestMixTitle =
-    process.env.NEXT_PUBLIC_LATEST_MIX_TITLE ?? "Neon Pulse — Live Club Set";
-
   return (
-    <HomeMusicProvider audioUrl={latestMixUrl} trackTitle={latestMixTitle}>
+    <>
       <HeroSection />
-      <FloatingMusicPlayer />
 
       <MusicPlaylist />
 
@@ -237,6 +229,6 @@ export default function HomePage() {
           </SectionReveal>
         </div>
       </section>
-    </HomeMusicProvider>
+    </>
   );
 }

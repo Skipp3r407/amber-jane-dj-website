@@ -18,7 +18,11 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
-export function Navbar() {
+type NavbarProps = {
+  className?: string;
+};
+
+export function Navbar({ className }: NavbarProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -41,6 +45,7 @@ export function Navbar() {
         scrolled
           ? "bg-night/90 shadow-lg shadow-black/25 backdrop-blur-xl"
           : "bg-transparent",
+        className,
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:py-4">

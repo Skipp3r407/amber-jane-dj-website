@@ -26,11 +26,15 @@ const social = [
   { label: "Mixcloud", href: site.social.mixcloud },
 ];
 
-export function Footer() {
+type FooterProps = {
+  className?: string;
+};
+
+export function Footer({ className }: FooterProps) {
   const pathname = usePathname();
 
   return (
-    <footer className="relative z-10 border-t border-white/10 bg-midnight/40">
+    <footer className={cn("relative z-10 border-t border-white/10 bg-midnight/40", className)}>
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <SectionReveal variant="left" className="lg:col-span-2">
           <Link

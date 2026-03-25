@@ -17,6 +17,8 @@ type HomeMusicContextValue = {
   hasAudio: boolean;
   playLatest: () => Promise<void>;
   toggle: () => Promise<void>;
+  /** Live analyser after first play (Web Audio). Null if not wired or unsupported. */
+  getAnalyser: () => AnalyserNode | null;
 };
 
 const HomeMusicContext = createContext<HomeMusicContextValue | null>(null);
@@ -37,9 +39,14 @@ type HomeMusicProviderProps = {
 
 export function HomeMusicProvider({ children, audioUrl, trackTitle }: HomeMusicProviderProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const mediaWiredRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const hasAudio = Boolean(audioUrl?.trim());
+
+  const getAnalyser = useCallback(() => analyserRef.current, []);
 
   useEffect(() => {
     const el = audioRef.current;
@@ -56,6 +63,48 @@ export function HomeMusicProvider({ children, audioUrl, trackTitle }: HomeMusicP
       el.removeEventListener("ended", onEnded);
     };
   }, [hasAudio]);
+
+  useEffect(() => {
+    const el = audioRef.current;
+    if (!el || !hasAudio) return;
+
+    const wireAnalyser = async () => {
+      if (mediaWiredRef.current) {
+        await audioCtxRef.current?.resume().catch(() => {});
+        return;
+      }
+      try {
+        const ctx = new AudioContext();
+        const source = ctx.createMediaElementSource(el);
+        const analyser = ctx.createAnalyser();
+        analyser.fftSize = 256;
+        analyser.smoothingTimeConstant = 0.45;
+        analyser.minDecibels = -78;
+        source.connect(analyser);
+        analyser.connect(ctx.destination);
+        audioCtxRef.current = ctx;
+        analyserRef.current = analyser;
+        mediaWiredRef.current = true;
+        await ctx.resume();
+      } catch {
+        /* Web Audio can fail in edge cases; EQ falls back to CSS animation */
+      }
+    };
+
+    el.addEventListener("play", wireAnalyser);
+    return () => {
+      el.removeEventListener("play", wireAnalyser);
+    };
+  }, [hasAudio]);
+
+  useEffect(() => {
+    return () => {
+      void audioCtxRef.current?.close();
+      audioCtxRef.current = null;
+      analyserRef.current = null;
+      mediaWiredRef.current = false;
+    };
+  }, []);
 
   const playLatest = useCallback(async () => {
     const el = audioRef.current;
@@ -90,13 +139,13 @@ export function HomeMusicProvider({ children, audioUrl, trackTitle }: HomeMusicP
       hasAudio,
       playLatest,
       toggle,
+      getAnalyser,
     }),
-    [isPlaying, trackTitle, hasAudio, playLatest, toggle],
+    [isPlaying, trackTitle, hasAudio, playLatest, toggle, getAnalyser],
   );
 
   return (
     <HomeMusicContext.Provider value={value}>
-      {/* preload="none": no fetch until user plays — keeps first paint light */}
       {hasAudio ? (
         <audio ref={audioRef} src={audioUrl!} preload="none" playsInline className="hidden" aria-hidden />
       ) : null}
