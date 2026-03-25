@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
+import { ScrollToBottomButton } from "@/components/ScrollToBottomButton";
 import { site } from "@/lib/site";
 
 const orbitron = Orbitron({
@@ -58,6 +59,7 @@ export default function RootLayout({
         <Navbar />
         <main className="relative z-10">{children}</main>
         <Footer />
+        <ScrollToBottomButton />
         <ChatWidget />
       </body>
     </html>
