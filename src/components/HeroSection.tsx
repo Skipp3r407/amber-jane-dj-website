@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Waveform } from "@/components/Waveform";
+import { HERO_MEDIA_SRC, PremiumMediaFrame } from "@/components/PremiumMediaFrame";
 
 const trustChips = [
   "Private Events",
@@ -82,26 +82,23 @@ export function HeroSection() {
           className="relative mx-auto w-full max-w-lg"
         >
           <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-neon-pink/25 via-midnight/40 to-neon-blue/20 blur-2xl" />
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50">
-            <Image
-              src="https://images.unsplash.com/photo-1571266028243-e473f8d7f4d8?auto=format&fit=crop&w=900&q=80"
-              alt="DJ at the decks with lights and crowd energy"
-              width={900}
-              height={700}
-              className="h-[320px] w-full object-cover sm:h-[380px] lg:h-[420px]"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-night via-night/25 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-night/75 px-4 py-3 backdrop-blur-md">
+          <PremiumMediaFrame
+            src={HERO_MEDIA_SRC}
+            alt="DJ at the decks with lights and crowd energy"
+            priority
+            sizes="(max-width: 1024px) 100vw, 480px"
+          >
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night via-night/25 to-transparent" />
+            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 rounded-2xl border border-white/15 bg-night/80 px-3 py-2.5 shadow-lg shadow-black/40 backdrop-blur-md sm:bottom-4 sm:left-4 sm:right-4 sm:px-4 sm:py-3">
               <div>
                 <p className="text-xs font-medium uppercase tracking-widest text-zinc-400">
                   In the mix
                 </p>
                 <p className="font-display text-sm text-foreground">Amber Jane</p>
               </div>
-              <Waveform className="h-10 w-28 opacity-90" bars={20} />
+              <Waveform className="h-9 w-24 opacity-90 sm:h-10 sm:w-28" bars={20} />
             </div>
-          </div>
+          </PremiumMediaFrame>
         </motion.div>
       </div>
     </section>

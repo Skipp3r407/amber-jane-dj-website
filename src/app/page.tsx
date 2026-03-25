@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { HeroSection } from "@/components/HeroSection";
+import { ABOUT_SECTION_MEDIA_SRC, PremiumMediaFrame } from "@/components/PremiumMediaFrame";
 import { SectionReveal } from "@/components/SectionReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { MusicCard } from "@/components/MusicCard";
@@ -123,16 +123,14 @@ export default function HomePage() {
       <section className="border-b border-white/5 py-16 sm:py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
           <SectionReveal variant="left">
-            <div className="relative overflow-hidden rounded-3xl border border-white/10">
-              <Image
-                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80"
-                alt="Amber Jane — DJ performance and creative energy"
-                width={900}
-                height={700}
-                className="h-[300px] w-full object-cover sm:h-[360px]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-transparent" />
-            </div>
+            <PremiumMediaFrame
+              src={ABOUT_SECTION_MEDIA_SRC}
+              alt="Amber Jane — DJ performance and creative energy"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="max-h-[280px] sm:max-h-[320px] lg:max-h-[360px]"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night via-night/30 to-transparent" />
+            </PremiumMediaFrame>
           </SectionReveal>
           <SectionReveal variant="right">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">About</p>
