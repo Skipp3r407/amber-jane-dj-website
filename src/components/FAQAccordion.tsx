@@ -22,25 +22,33 @@ export function FAQAccordion({ items, className }: FAQAccordionProps) {
           <div
             key={item.q}
             className={cn(
-              "group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 ease-out",
-              "hover:border-neon-purple/45 hover:bg-white/[0.07]",
-              "hover:shadow-[0_0_28px_rgba(123,44,255,0.14),0_0_40px_rgba(255,60,172,0.08)]",
-              isOpen && "border-neon-blue/25 bg-white/[0.06] shadow-[0_0_20px_rgba(0,194,255,0.06)]",
+              "group overflow-hidden rounded-2xl border bg-white/[0.03] transition-all duration-300 ease-out",
+              "border-white/10",
+              "hover:border-neon-pink/50 hover:bg-gradient-to-br hover:from-neon-pink/[0.07] hover:to-neon-purple/[0.06]",
+              "hover:shadow-[0_0_32px_rgba(255,60,172,0.22),0_0_48px_rgba(123,44,255,0.14)] hover:ring-1 hover:ring-neon-pink/25",
+              isOpen &&
+                "border-neon-pink/40 bg-white/[0.07] shadow-[0_0_28px_rgba(255,60,172,0.2),0_0_40px_rgba(167,85,247,0.1)] ring-1 ring-neon-pink/20",
             )}
           >
             <button
               type="button"
               onClick={() => setOpen(isOpen ? null : i)}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors duration-300 group-hover:bg-white/[0.02]"
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors duration-300"
               aria-expanded={isOpen}
             >
-              <span className="font-display text-base text-foreground transition-colors duration-300 group-hover:text-white">
+              <span
+                className={cn(
+                  "font-display text-base text-foreground transition-colors duration-300",
+                  "group-hover:text-white",
+                  isOpen && "text-white",
+                )}
+              >
                 {item.q}
               </span>
               <span
                 className={cn(
                   "text-neon-blue transition-all duration-300 group-hover:text-neon-pink",
-                  isOpen && "rotate-180 text-neon-blue",
+                  isOpen && "rotate-180 text-neon-pink",
                 )}
                 aria-hidden
               >
