@@ -28,8 +28,8 @@ export default function AboutPage() {
           <SectionReveal delay={0.05}>
             <div className="relative overflow-hidden rounded-3xl border border-white/10">
               <Image
-                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80"
-                alt="DJ headphones and performance energy"
+                src="/images/amber2.png"
+                alt="Amber Jane performing live"
                 width={900}
                 height={700}
                 className="h-[320px] w-full object-cover sm:h-[380px]"

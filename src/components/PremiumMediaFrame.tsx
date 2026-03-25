@@ -7,8 +7,7 @@ import { cn } from "@/lib/utils";
 /** Hero — local brand photography (see /public/images/hero-amber-jane.png). */
 export const HERO_MEDIA_SRC = "/images/hero-amber-jane.png";
 
-export const ABOUT_SECTION_MEDIA_SRC =
-  "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80";
+export const ABOUT_SECTION_MEDIA_SRC = "/images/amber1.png";
 
 type PremiumMediaFrameProps = {
   src: string;
