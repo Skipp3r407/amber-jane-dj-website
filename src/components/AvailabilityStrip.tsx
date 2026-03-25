@@ -5,24 +5,18 @@ import type { CalendarEvent } from "@/data/eventsCalendar";
 import { SectionReveal } from "@/components/SectionReveal";
 import { HeadlineTitle } from "@/components/HeadlineTitle";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
+import { SITE_MAIN_BLEED, SITE_MAIN_INNER, SITE_PURPLE_BAR } from "@/lib/siteBleed";
 
 type AvailabilityStripProps = {
   events: CalendarEvent[];
 };
 
-/** Matches SiteMusicShell main padding so full-bleed aligns with viewport; inner text aligns with other sections. */
-const bleed =
-  "-ml-[4.25rem] w-[calc(100%+4.25rem)] sm:-ml-24 sm:w-[calc(100%+6rem)] md:-ml-28 md:w-[calc(100%+7rem)]";
-
-const innerAlign =
-  "mx-auto max-w-6xl py-10 pr-4 pl-[calc(4.25rem+1rem)] sm:pr-6 sm:pl-[calc(6rem+1.5rem)] md:pl-[calc(7rem+1.5rem)]";
-
 export function AvailabilityStrip({ events }: AvailabilityStripProps) {
   if (events.length === 0) return null;
 
   return (
-    <section className={`relative border-y border-white/10 bg-midnight/45 ${bleed}`}>
-      <div className={innerAlign}>
+    <section className={`relative ${SITE_PURPLE_BAR} ${SITE_MAIN_BLEED}`}>
+      <div className={`${SITE_MAIN_INNER} py-10`}>
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <SectionReveal variant="left" className="min-w-0 flex-1">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">

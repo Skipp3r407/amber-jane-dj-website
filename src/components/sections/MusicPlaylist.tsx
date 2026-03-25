@@ -9,6 +9,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { buildSoundCloudPlayerSrc } from "@/lib/soundcloudPlayer";
 import { MusicCard } from "@/components/MusicCard";
+import { SITE_MAIN_BLEED, SITE_MAIN_INNER, SITE_PURPLE_BAR } from "@/lib/siteBleed";
 
 export function MusicPlaylist() {
   const reduce = useReducedMotion();
@@ -122,32 +123,36 @@ export function MusicPlaylist() {
             Follow for drops, tributes, and live recordings.
           </SectionReveal>
         </div>
+      </div>
 
-        <SectionReveal variant="up" delay={0.06} className="mt-10 block">
-          <div
-            ref={playerRef}
-            id="soundcloud-player-anchor"
-            className="scroll-mt-24 rounded-2xl border border-white/10 bg-night/60 p-3 shadow-[0_0_40px_rgba(0,0,0,0.35)] ring-1 ring-white/10 backdrop-blur-md sm:p-4"
-          >
-          <div className="mb-2 flex flex-wrap items-center justify-between gap-2 px-1">
-            <p className="text-xs font-semibold uppercase tracking-widest text-neon-blue">Player</p>
-            <p className="truncate font-display text-sm text-foreground sm:text-base">{selected.title}</p>
-          </div>
-          <div className="relative overflow-hidden rounded-xl ring-1 ring-white/10">
-            <iframe
-              key={`${selectedIndex}-${loadNonce}`}
-              title={`SoundCloud — ${selected.title}`}
-              width="100%"
-              height={420}
-              scrolling="no"
-              frameBorder="no"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              src={embedSrc}
-              className="block min-h-[280px] w-full bg-black sm:min-h-[360px]"
-            />
-          </div>
+      <div
+        ref={playerRef}
+        id="soundcloud-player-anchor"
+        className={`scroll-mt-24 ${SITE_MAIN_BLEED} ${SITE_PURPLE_BAR} mt-10`}
+      >
+        <div className={`${SITE_MAIN_INNER} py-8 sm:py-10`}>
+          <SectionReveal variant="up" delay={0.06} className="block">
+            <div className="rounded-2xl border border-white/10 bg-night/60 p-3 shadow-[0_0_40px_rgba(0,0,0,0.35)] ring-1 ring-white/10 backdrop-blur-md sm:p-4">
+              <div className="mb-2 flex flex-wrap items-center justify-between gap-2 px-1">
+                <p className="text-xs font-semibold uppercase tracking-widest text-neon-blue">Player</p>
+                <p className="truncate font-display text-sm text-foreground sm:text-base">{selected.title}</p>
+              </div>
+              <div className="relative overflow-hidden rounded-xl ring-1 ring-white/10">
+                <iframe
+                  key={`${selectedIndex}-${loadNonce}`}
+                  title={`SoundCloud — ${selected.title}`}
+                  width="100%"
+                  height={420}
+                  scrolling="no"
+                  frameBorder="no"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  src={embedSrc}
+                  className="block min-h-[280px] w-full bg-black sm:min-h-[360px]"
+                />
+              </div>
+            </div>
+          </SectionReveal>
         </div>
-        </SectionReveal>
       </div>
     </section>
   );
