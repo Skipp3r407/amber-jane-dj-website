@@ -8,6 +8,7 @@ import { SectionReveal } from "@/components/SectionReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { buildSoundCloudPlayerSrc } from "@/lib/soundcloudPlayer";
+import { MusicCard } from "@/components/MusicCard";
 
 export function MusicPlaylist() {
   const reduce = useReducedMotion();
@@ -74,11 +75,11 @@ export function MusicPlaylist() {
         </SectionReveal>
 
         <SectionReveal variant="up" delay={0.04} className="mt-2 block text-center text-xs text-zinc-500 md:text-left">
-          Tap a track to load the player — playback starts automatically once the SoundCloud widget
-          loads (no autoplay until you choose a track).
+          Tap <span className="text-zinc-400">Play</span> on a card to load the player — audio starts
+          once the SoundCloud widget loads (nothing autoplays until you choose a track).
         </SectionReveal>
 
-        <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid list-none gap-6 sm:grid-cols-2 md:grid-cols-3 md:items-stretch">
           {SOUNDCLOUD_PLAYLIST.map((track, index) => {
             const active = index === selectedIndex;
             return (
@@ -87,57 +88,18 @@ export function MusicPlaylist() {
                 as="li"
                 variant={revealVariantFromIndex(index)}
                 delay={index * 0.04}
-                className="min-w-0"
+                className="h-full min-h-0"
               >
-                <button
-                  type="button"
-                  onClick={() => selectTrack(index)}
-                  className={[
-                    "group relative w-full rounded-2xl border p-4 text-left transition duration-300",
-                    active
-                      ? "border-neon-pink/50 bg-midnight/60 shadow-[0_0_28px_rgba(255,60,172,0.12)] ring-1 ring-neon-pink/40"
-                      : "border-white/10 bg-night/40 hover:border-neon-purple/35 hover:bg-midnight/40 hover:shadow-[0_0_24px_rgba(123,44,255,0.08)]",
-                  ].join(" ")}
-                  aria-pressed={active}
-                  aria-current={active ? "true" : undefined}
-                >
-                  <span
-                    className={`pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100 ${
-                      active ? "opacity-100" : ""
-                    }`}
-                    style={{
-                      background:
-                        "radial-gradient(120% 80% at 50% 0%, rgba(255,60,172,0.08), transparent 55%)",
-                    }}
-                  />
-                  <span className="relative flex items-start justify-between gap-3">
-                    <span className="min-w-0">
-                      <span className="font-display text-sm font-semibold leading-snug text-foreground sm:text-base">
-                        {track.title}
-                      </span>
-                      {track.subtitle ? (
-                        <span className="mt-0.5 block text-[11px] font-medium uppercase tracking-wide text-neon-blue/90">
-                          {track.subtitle}
-                        </span>
-                      ) : null}
-                      {track.description ? (
-                        <span className="mt-1 block text-xs leading-relaxed text-muted">
-                          {track.description}
-                        </span>
-                      ) : null}
-                    </span>
-                    <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold transition ${
-                        active
-                          ? "bg-gradient-to-br from-neon-pink to-neon-purple text-white shadow-neon"
-                          : "bg-white/10 text-zinc-300 group-hover:bg-white/15"
-                      }`}
-                      aria-hidden
-                    >
-                      ▶
-                    </span>
-                  </span>
-                </button>
+                <MusicCard
+                  className="h-full"
+                  title={track.title}
+                  genre={track.genreLine}
+                  duration={track.duration}
+                  year={track.year}
+                  playlistMode
+                  selected={active}
+                  onSelect={() => selectTrack(index)}
+                />
               </SectionReveal>
             );
           })}

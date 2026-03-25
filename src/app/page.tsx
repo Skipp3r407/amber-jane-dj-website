@@ -4,7 +4,6 @@ import { ABOUT_SECTION_MEDIA_SRC, PremiumMediaFrame } from "@/components/Premium
 import { SectionReveal } from "@/components/SectionReveal";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { SectionHeading } from "@/components/SectionHeading";
-import { MusicCard } from "@/components/MusicCard";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { EventCard } from "@/components/EventCard";
@@ -12,13 +11,7 @@ import { CTASection } from "@/components/CTASection";
 import { ContactForm } from "@/components/ContactForm";
 import { AvailabilityStrip } from "@/components/AvailabilityStrip";
 import { ReviewHighlightBanner } from "@/components/ReviewHighlightBanner";
-import {
-  mixesPreview,
-  services,
-  testimonials,
-  events,
-  whyBook,
-} from "@/data/content";
+import { services, testimonials, events, whyBook } from "@/data/content";
 import { upcomingEvents } from "@/data/eventsCalendar";
 import { HomeMusicProvider } from "@/components/music/HomeMusicProvider";
 import { FloatingMusicPlayer } from "@/components/music/FloatingMusicPlayer";
@@ -38,7 +31,6 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const demoAudio = process.env.NEXT_PUBLIC_MIX_DEMO_URL ?? null;
   const latestMixUrl =
     process.env.NEXT_PUBLIC_LATEST_MIX_URL ?? process.env.NEXT_PUBLIC_MIX_DEMO_URL ?? null;
   const latestMixTitle =
@@ -50,49 +42,6 @@ export default function HomePage() {
       <FloatingMusicPlayer />
 
       <MusicPlaylist />
-
-      <section className="border-b border-white/5 py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <SectionReveal variant="left" className="min-w-0 flex-1">
-              <SectionHeading
-                eyebrow="Mixes & music"
-                title="Featured"
-                titleGradient="mixes"
-                subtitle="Floor-tested energy — hear more on the Mixes page."
-              />
-            </SectionReveal>
-            <SectionReveal variant="right" delay={0.05} className="shrink-0">
-              <Link
-                href="/mixes"
-                className="inline-flex w-fit rounded-full border border-white/15 px-5 py-2 text-sm font-semibold text-foreground transition hover:scale-[1.02] hover:border-neon-pink/50"
-              >
-                All music
-              </Link>
-            </SectionReveal>
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3 md:items-stretch">
-            {mixesPreview.map((m, i) => (
-              <SectionReveal
-                key={m.id}
-                className="h-full min-h-0"
-                delay={i * 0.06}
-                variant={i % 3 === 1 ? "left" : i % 3 === 2 ? "right" : "up"}
-              >
-                <MusicCard
-                  className="h-full"
-                  title={m.title}
-                  genre={m.genre}
-                  duration={m.duration}
-                  year={m.year}
-                  audioSrc={i === 0 ? demoAudio : null}
-                  listenHref={m.listenHref}
-                />
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="border-b border-white/5 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">

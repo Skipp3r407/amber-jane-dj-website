@@ -11,6 +11,10 @@ export type SoundcloudPlaylistTrack = {
   subtitle?: string;
   soundcloudUrl: string;
   description?: string;
+  /** Single line for MusicCard (e.g. "House / Tech House") */
+  genreLine: string;
+  duration: string;
+  year: string;
 };
 
 export const SOUNDCLOUD_PLAYLIST: SoundcloudPlaylistTrack[] = SOUNDCLOUD_CATALOG.map((item) => ({
@@ -19,6 +23,9 @@ export const SOUNDCLOUD_PLAYLIST: SoundcloudPlaylistTrack[] = SOUNDCLOUD_CATALOG
   subtitle: item.playlistSubtitle,
   soundcloudUrl: item.permalink,
   description: item.description,
+  genreLine: item.genres.join(" / "),
+  duration: item.duration,
+  year: item.year,
 }));
 
 export const SOUNDCLOUD_PROFILE = "https://soundcloud.com/djamberjane1";

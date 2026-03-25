@@ -14,6 +14,10 @@ type MusicCardProps = {
   audioSrc?: string | null;
   /** Opens the full player on the Mixes page (same track as this card). */
   listenHref?: string | null;
+  /** Home Listen section: card selects the SoundCloud embed below. */
+  playlistMode?: boolean;
+  selected?: boolean;
+  onSelect?: () => void;
   className?: string;
 };
 
@@ -24,6 +28,9 @@ export function MusicCard({
   year,
   audioSrc,
   listenHref,
+  playlistMode,
+  selected,
+  onSelect,
   className,
 }: MusicCardProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -40,12 +47,20 @@ export function MusicCard({
     }
   };
 
+  const isPlaylist = Boolean(playlistMode && onSelect);
+  const waveformActive = isPlaylist
+    ? Boolean(selected)
+    : playing || !audioSrc;
+
   return (
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 380, damping: 30 }}
       className={cn(
         "group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-5 shadow-lg shadow-black/30",
+        isPlaylist &&
+          selected &&
+          "border-neon-pink/50 bg-midnight/40 shadow-[0_0_28px_rgba(255,60,172,0.12)] ring-1 ring-neon-pink/40",
         className,
       )}
     >
@@ -62,14 +77,27 @@ export function MusicCard({
         </div>
 
         <div className="flex min-h-[2.75rem] flex-1 flex-col items-center justify-center py-3">
-          <Waveform active={playing || !audioSrc} />
+          <Waveform active={waveformActive} />
         </div>
 
         <div className="mt-auto flex shrink-0 items-center justify-between gap-2 pt-2">
           <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">
             {duration}
           </span>
-          {audioSrc ? (
+          {isPlaylist ? (
+            <button
+              type="button"
+              onClick={onSelect}
+              className={cn(
+                "inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition",
+                selected
+                  ? "bg-gradient-to-r from-neon-pink/90 to-neon-purple/90 text-white shadow-neon hover:brightness-110"
+                  : "border border-white/10 bg-white/10 text-zinc-300 hover:bg-white/15",
+              )}
+            >
+              Play
+            </button>
+          ) : audioSrc ? (
             <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
               <button
                 type="button"
