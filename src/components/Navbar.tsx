@@ -43,18 +43,18 @@ export function Navbar() {
           : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:py-4">
         <Link
           href="/"
-          className="group flex shrink-0 items-center gap-2 outline-none ring-offset-2 ring-offset-night focus-visible:ring-2 focus-visible:ring-neon-blue/60"
+          className="group relative flex shrink-0 items-center outline-none ring-offset-2 ring-offset-night focus-visible:ring-2 focus-visible:ring-neon-blue/60 [-webkit-tap-highlight-color:transparent]"
         >
           <Image
             src="/images/amber-jane-logo.png"
             alt="Amber Jane"
-            width={220}
-            height={88}
+            width={900}
+            height={360}
             priority
-            className="h-9 w-auto max-h-10 object-contain object-left transition duration-300 group-hover:brightness-110 sm:h-10 sm:max-h-11"
+            className="h-auto w-auto max-h-24 object-contain object-left transition duration-300 [mix-blend-mode:screen] group-hover:brightness-110 sm:max-h-36 md:max-h-44 lg:max-h-[11.25rem]"
           />
         </Link>
 

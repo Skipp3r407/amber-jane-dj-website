@@ -4,9 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-/** Crowd / live energy — standard Unsplash CDN path (hero replaces previous 404 photo id). */
-export const HERO_MEDIA_SRC =
-  "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80";
+/** Hero — local brand photography (see /public/images/hero-amber-jane.png). */
+export const HERO_MEDIA_SRC = "/images/hero-amber-jane.png";
 
 export const ABOUT_SECTION_MEDIA_SRC =
   "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80";

@@ -84,7 +84,7 @@ export function HeroSection() {
           <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-neon-pink/25 via-midnight/40 to-neon-blue/20 blur-2xl" />
           <PremiumMediaFrame
             src={HERO_MEDIA_SRC}
-            alt="DJ at the decks with lights and crowd energy"
+            alt="Amber Jane DJing live with purple club lighting and Pioneer gear"
             priority
             sizes="(max-width: 1024px) 100vw, 480px"
           >

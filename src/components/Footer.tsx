@@ -30,9 +30,9 @@ export function Footer() {
             <Image
               src="/images/amber-jane-logo.png"
               alt={site.name}
-              width={220}
-              height={88}
-              className="h-10 w-auto max-w-[220px] object-contain object-left sm:h-11"
+              width={900}
+              height={360}
+              className="h-auto w-auto max-h-28 object-contain object-left [mix-blend-mode:screen] sm:max-h-36"
             />
           </Link>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
