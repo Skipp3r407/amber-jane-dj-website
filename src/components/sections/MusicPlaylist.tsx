@@ -56,7 +56,7 @@ export function MusicPlaylist() {
             headingId="listen-heading"
             className="text-center md:text-left"
             eyebrow="SoundCloud"
-            titleGradient="Listen"
+            title="Listen"
             subtitle={
               <>
                 Mixes, tributes, and reposts from{" "}

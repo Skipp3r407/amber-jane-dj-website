@@ -31,7 +31,7 @@ export function CTASection({
         <HeadlineTitle
           as="h2"
           size="section"
-          titleGradient={title}
+          title={title}
           align="center"
           className="mt-2 mx-auto max-w-3xl"
         />

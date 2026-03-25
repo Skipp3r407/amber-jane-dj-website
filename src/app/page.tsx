@@ -48,8 +48,7 @@ export default function HomePage() {
           <SectionReveal variant="down">
             <SectionHeading
               eyebrow="Bookings"
-              title="Built for"
-              titleGradient="your night"
+              title="Built for your night"
               subtitle="From intimate lounges to headline rooms — flexible formats, polished production, and a set that matches your crowd."
             />
           </SectionReveal>
@@ -83,8 +82,7 @@ export default function HomePage() {
           <SectionReveal variant="right">
             <SectionHeading
               eyebrow="Why Amber Jane"
-              title="Performance"
-              titleGradient="you can trust"
+              title="Performance you can trust"
             />
           </SectionReveal>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -115,8 +113,7 @@ export default function HomePage() {
           <SectionReveal variant="right">
             <SectionHeading
               eyebrow="About"
-              title="Artist energy,"
-              titleGradient="professional execution"
+              title="Artist energy, professional execution"
             />
             <p className="mt-4 text-muted">
               Amber Jane builds sets with intention — tension, release, and moments that hit. From
@@ -179,7 +176,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <SectionReveal variant="down" className="min-w-0 flex-1">
-              <SectionHeading eyebrow="Testimonials" title="Proof on" titleGradient="the floor" />
+              <SectionHeading eyebrow="Testimonials" title="Proof on the floor" />
             </SectionReveal>
             <SectionReveal variant="up" delay={0.05} className="shrink-0">
               <Link
@@ -214,8 +211,7 @@ export default function HomePage() {
           <SectionReveal variant="left">
             <SectionHeading
               eyebrow="Contact"
-              title="Let's plan"
-              titleGradient="your event"
+              title="Let's plan your event"
               subtitle={
                 <>
                   Tell us what you&apos;re dreaming up — we&apos;ll reply with availability and next
