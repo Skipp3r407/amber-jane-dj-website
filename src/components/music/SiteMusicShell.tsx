@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { BackgroundRadioBars } from "@/components/BackgroundRadioBars";
+import { FloatingVisualizer } from "@/components/ui/FloatingVisualizer";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
@@ -22,7 +22,7 @@ export function SiteMusicShell({ children }: { children: ReactNode }) {
 
   return (
     <HomeMusicProvider audioUrl={audioUrl} trackTitle={trackTitle}>
-      <BackgroundRadioBars />
+      <FloatingVisualizer />
       <Navbar />
       <main className="relative z-10">{children}</main>
       <Footer />
