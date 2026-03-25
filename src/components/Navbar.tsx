@@ -67,14 +67,15 @@ export function Navbar() {
                 href={l.href}
                 className={cn(
                   "relative rounded-full px-2.5 py-2 text-xs font-medium transition-all duration-300 lg:px-3 lg:text-sm",
-                  "hover:bg-gradient-to-r hover:from-neon-pink hover:via-neon-purple hover:to-neon-blue hover:bg-clip-text hover:text-transparent",
+                  !active &&
+                    "hover:bg-gradient-to-r hover:from-neon-pink hover:via-neon-purple hover:to-neon-blue hover:bg-clip-text hover:text-transparent",
                   active ? "text-white" : "text-zinc-300",
                 )}
               >
                 {active && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-white/10 ring-1 ring-white/10"
+                    className="absolute inset-0 -z-10 rounded-full bg-neon-pink shadow-[0_0_20px_rgba(255,60,172,0.35)] ring-1 ring-neon-pink/80"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -136,8 +137,11 @@ export function Navbar() {
                   href={l.href}
                   className={cn(
                     "rounded-lg px-3 py-3 text-sm font-medium transition-all duration-300",
-                    "hover:bg-gradient-to-r hover:from-neon-pink hover:via-neon-purple hover:to-neon-blue hover:bg-clip-text hover:text-transparent",
-                    pathname === l.href ? "bg-white/10 text-white" : "text-zinc-300",
+                    pathname !== l.href &&
+                      "hover:bg-gradient-to-r hover:from-neon-pink hover:via-neon-purple hover:to-neon-blue hover:bg-clip-text hover:text-transparent",
+                    pathname === l.href
+                      ? "bg-neon-pink text-white shadow-[0_0_18px_rgba(255,60,172,0.35)]"
+                      : "text-zinc-300",
                   )}
                 >
                   {l.label}

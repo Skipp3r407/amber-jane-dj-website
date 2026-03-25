@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { SectionReveal } from "@/components/SectionReveal";
+import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 
 const footerLinks = [
@@ -25,6 +27,8 @@ const social = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+
   return (
     <footer className="relative z-10 border-t border-white/10 bg-midnight/40">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
@@ -55,13 +59,24 @@ export function Footer() {
         <SectionReveal variant="up" delay={0.05}>
           <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Explore</p>
           <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
-            {footerLinks.map((l) => (
-              <li key={l.href}>
-                <Link className="text-zinc-300 hover:text-white" href={l.href}>
-                  {l.label}
-                </Link>
-              </li>
-            ))}
+            {footerLinks.map((l) => {
+              const active = pathname === l.href;
+              return (
+                <li key={l.href}>
+                  <Link
+                    className={cn(
+                      "inline-block rounded-full px-2.5 py-1 transition-colors",
+                      active
+                        ? "bg-neon-pink font-medium text-white shadow-[0_0_14px_rgba(255,60,172,0.3)]"
+                        : "text-zinc-300 hover:text-white",
+                    )}
+                    href={l.href}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </SectionReveal>
         <SectionReveal variant="right" delay={0.08}>
