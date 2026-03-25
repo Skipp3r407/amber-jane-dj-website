@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Waveform } from "@/components/Waveform";
 
 type MusicCardProps = {
   title: string;
@@ -48,9 +47,6 @@ export function MusicCard({
   };
 
   const isPlaylist = Boolean(playlistMode && onSelect);
-  const waveformActive = isPlaylist
-    ? Boolean(selected)
-    : playing || !audioSrc;
 
   return (
     <motion.article
@@ -74,10 +70,6 @@ export function MusicCard({
           <span className="shrink-0 rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-zinc-400">
             {year}
           </span>
-        </div>
-
-        <div className="flex min-h-[2.75rem] flex-1 flex-col items-center justify-center py-3">
-          <Waveform active={waveformActive} />
         </div>
 
         <div className="mt-auto flex shrink-0 items-center justify-between gap-2 pt-2">

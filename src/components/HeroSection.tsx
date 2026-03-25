@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { Waveform } from "@/components/Waveform";
 import { HERO_MEDIA_SRC, PremiumMediaFrame } from "@/components/PremiumMediaFrame";
 import { HeroPlayMixButton } from "@/components/music/HeroPlayMixButton";
 import { HeadlineTitle } from "@/components/HeadlineTitle";
@@ -95,14 +94,11 @@ export function HeroSection() {
             sizes="(max-width: 1024px) 100vw, 480px"
           >
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night via-night/25 to-transparent" />
-            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 rounded-2xl border border-white/15 bg-night/80 px-3 py-2.5 shadow-lg shadow-black/40 backdrop-blur-md sm:bottom-4 sm:left-4 sm:right-4 sm:px-4 sm:py-3">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-widest text-zinc-400">
-                  In the mix
-                </p>
-                <p className="font-display text-sm text-foreground">Amber Jane</p>
-              </div>
-              <Waveform className="h-9 w-24 opacity-90 sm:h-10 sm:w-28" bars={20} />
+            <div className="absolute bottom-3 left-3 right-3 rounded-2xl border border-white/15 bg-night/80 px-3 py-2.5 shadow-lg shadow-black/40 backdrop-blur-md sm:bottom-4 sm:left-4 sm:right-4 sm:px-4 sm:py-3">
+              <p className="text-xs font-medium uppercase tracking-widest text-zinc-400">
+                In the mix
+              </p>
+              <p className="font-display text-sm text-foreground">Amber Jane</p>
             </div>
           </PremiumMediaFrame>
         </motion.div>

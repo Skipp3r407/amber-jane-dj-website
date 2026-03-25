@@ -1,36 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useHomeMusic } from "@/components/music/HomeMusicProvider";
 import { cn } from "@/lib/utils";
-
-function MiniSpectrum({ active }: { active: boolean }) {
-  const reduce = useReducedMotion();
-  const on = active && !reduce;
-
-  return (
-    <div className="flex h-7 w-12 items-end justify-center gap-0.5" aria-hidden>
-      {[0, 1, 2, 3, 4].map((i) => (
-        <motion.span
-          key={i}
-          className="block h-6 w-0.5 origin-bottom rounded-full bg-gradient-to-t from-neon-blue/60 to-neon-pink"
-          animate={on ? { scaleY: [0.35, 1, 0.45, 0.88, 0.4] } : { scaleY: 0.28 }}
-          transition={
-            on
-              ? {
-                  duration: 0.85,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut",
-                  delay: i * 0.06,
-                }
-              : { duration: 0.2 }
-          }
-        />
-      ))}
-    </div>
-  );
-}
 
 export function FloatingMusicPlayer() {
   const { isPlaying, trackTitle, hasAudio, toggle } = useHomeMusic();
@@ -81,10 +53,6 @@ export function FloatingMusicPlayer() {
             Now playing
           </p>
           <p className="truncate font-display text-sm text-foreground">{trackTitle}</p>
-        </div>
-        <div className="hidden h-8 w-px shrink-0 bg-gradient-to-b from-transparent via-neon-pink/35 to-transparent sm:block" />
-        <div className="hidden sm:block">
-          <MiniSpectrum active={isPlaying} />
         </div>
       </div>
     </motion.div>
