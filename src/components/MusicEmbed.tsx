@@ -2,12 +2,22 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import type { MixEntry, MixPlatform } from "@/data/mixes";
+import type { MixEntry } from "@/data/mixes";
 import { GenreTagList } from "@/components/GenreTagList";
+import { buildSoundCloudPlayerSrc } from "@/lib/soundcloudPlayer";
 
-function embedHeight(embedUrl: string, platform: MixPlatform) {
-  if (embedUrl.includes("spotify.com")) return 152;
-  if (platform === "mixcloud") return 120;
+function iframeSrc(mix: MixEntry): string | null {
+  if (!mix.embedUrl) return null;
+  if (mix.platform === "soundcloud") {
+    return buildSoundCloudPlayerSrc(mix.embedUrl);
+  }
+  return mix.embedUrl;
+}
+
+function iframeHeight(mix: MixEntry, src: string): number {
+  if (mix.platform === "soundcloud") return 420;
+  if (src.includes("spotify.com")) return 152;
+  if (mix.platform === "mixcloud") return 120;
   return 166;
 }
 
@@ -17,7 +27,8 @@ type MusicEmbedProps = {
 };
 
 export function MusicEmbed({ mix, className }: MusicEmbedProps) {
-  const hasEmbed = Boolean(mix.embedUrl);
+  const src = iframeSrc(mix);
+  const hasEmbed = Boolean(src);
 
   return (
     <motion.article
@@ -36,22 +47,20 @@ export function MusicEmbed({ mix, className }: MusicEmbedProps) {
           <span>•</span>
           <span>{mix.year}</span>
           <span>•</span>
-          <span className="uppercase tracking-wider text-violet-soft/90">
-            {mix.platform === "placeholder" ? "Player" : mix.platform}
-          </span>
+          <span className="uppercase tracking-wider text-violet-soft/90">{mix.platform}</span>
         </div>
         <GenreTagList genres={mix.genres} className="mt-3" />
       </div>
 
       <div className="p-4">
-        {hasEmbed && mix.embedUrl ? (
+        {hasEmbed && src ? (
           <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
             <iframe
               title={`${mix.title} player`}
-              src={mix.embedUrl}
+              src={src}
               width="100%"
-              height={embedHeight(mix.embedUrl, mix.platform)}
-              className="w-full bg-black"
+              height={iframeHeight(mix, src)}
+              className="block min-h-[280px] w-full bg-black sm:min-h-[360px]"
               loading="lazy"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             />

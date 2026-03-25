@@ -7,20 +7,7 @@ import { SOUNDCLOUD_PLAYLIST, SOUNDCLOUD_PROFILE } from "@/data/soundcloudPlayli
 import { SectionReveal } from "@/components/SectionReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
-
-function buildEmbedSrc(trackUrl: string) {
-  const params = new URLSearchParams({
-    url: trackUrl,
-    color: "#ff5500",
-    auto_play: "false",
-    hide_related: "false",
-    show_comments: "false",
-    show_user: "true",
-    show_reposts: "false",
-    visual: "true",
-  });
-  return `https://w.soundcloud.com/player/?${params.toString()}`;
-}
+import { buildSoundCloudPlayerSrc } from "@/lib/soundcloudPlayer";
 
 export function MusicPlaylist() {
   const reduce = useReducedMotion();
@@ -28,7 +15,7 @@ export function MusicPlaylist() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const selected = SOUNDCLOUD_PLAYLIST[selectedIndex]!;
-  const embedSrc = buildEmbedSrc(selected.soundcloudUrl);
+  const embedSrc = buildSoundCloudPlayerSrc(selected.soundcloudUrl);
 
   const scrollToPlayer = useCallback(() => {
     if (typeof window === "undefined" || !playerRef.current) return;

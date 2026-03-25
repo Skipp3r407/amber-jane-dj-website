@@ -1,8 +1,7 @@
 /**
- * Mix entries and embed URLs for the Mixes page.
- * Spotify: use open.spotify.com/embed/... URLs
- * SoundCloud: use w.soundcloud.com/player/?url=... or share embed src from SoundCloud
- * Mixcloud: use widget iframe src from Mixcloud embed code
+ * Mix entries for the Mixes page.
+ * SoundCloud: `embedUrl` is the track permalink; the player uses the same widget as the home Listen section.
+ * Spotify / Mixcloud: `embedUrl` is the full iframe `src` from the platform’s embed dialog.
  */
 export type MixPlatform = "soundcloud" | "spotify" | "mixcloud" | "audio" | "placeholder";
 
@@ -14,7 +13,7 @@ export type MixEntry = {
   duration: string;
   year: string;
   platform: MixPlatform;
-  /** Full iframe src or Spotify/SoundCloud embed URL */
+  /** SoundCloud: canonical track URL. Spotify/Mixcloud: full iframe embed URL. */
   embedUrl: string | null;
   /** Optional direct MP3 for fallback player */
   audioUrl?: string | null;
@@ -28,8 +27,8 @@ export const mixes: MixEntry[] = [
     genres: ["House", "Tech House"],
     duration: "58 min",
     year: "2025",
-    platform: "placeholder",
-    embedUrl: null,
+    platform: "soundcloud",
+    embedUrl: "https://soundcloud.com/djamberjane1/in-this-moment",
     audioUrl: null,
   },
   {
@@ -39,8 +38,8 @@ export const mixes: MixEntry[] = [
     genres: ["Melodic", "Progressive"],
     duration: "62 min",
     year: "2025",
-    platform: "placeholder",
-    embedUrl: null,
+    platform: "soundcloud",
+    embedUrl: "https://soundcloud.com/djamberjane1/aurora-in-her-soul-mizzo-tribute",
   },
   {
     id: "3",
@@ -49,8 +48,8 @@ export const mixes: MixEntry[] = [
     genres: ["Open Format", "Party"],
     duration: "74 min",
     year: "2024",
-    platform: "placeholder",
-    embedUrl: null,
+    platform: "soundcloud",
+    embedUrl: "https://soundcloud.com/djamberjane1/back-to-the-classics-with-dj-genesis",
   },
 ];
 
