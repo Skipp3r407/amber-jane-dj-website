@@ -21,19 +21,26 @@ export function FAQAccordion({ items, className }: FAQAccordionProps) {
         return (
           <div
             key={item.q}
-            className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
+            className={cn(
+              "group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 ease-out",
+              "hover:border-neon-purple/45 hover:bg-white/[0.07]",
+              "hover:shadow-[0_0_28px_rgba(123,44,255,0.14),0_0_40px_rgba(255,60,172,0.08)]",
+              isOpen && "border-neon-blue/25 bg-white/[0.06] shadow-[0_0_20px_rgba(0,194,255,0.06)]",
+            )}
           >
             <button
               type="button"
               onClick={() => setOpen(isOpen ? null : i)}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors duration-300 group-hover:bg-white/[0.02]"
               aria-expanded={isOpen}
             >
-              <span className="font-display text-base text-foreground">{item.q}</span>
+              <span className="font-display text-base text-foreground transition-colors duration-300 group-hover:text-white">
+                {item.q}
+              </span>
               <span
                 className={cn(
-                  "text-neon-blue transition-transform",
-                  isOpen && "rotate-180",
+                  "text-neon-blue transition-all duration-300 group-hover:text-neon-pink",
+                  isOpen && "rotate-180 text-neon-blue",
                 )}
                 aria-hidden
               >
