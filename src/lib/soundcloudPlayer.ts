@@ -11,6 +11,8 @@ export function buildSoundCloudPlayerSrc(trackUrl: string) {
     show_comments: "false",
     show_user: "true",
     show_reposts: "false",
+    /** Hides the square artwork thumbnail so the bar matches light UI without a black box */
+    show_artwork: "false",
     visual: "true",
   });
   return `https://w.soundcloud.com/player/?${params.toString()}`;
