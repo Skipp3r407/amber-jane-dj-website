@@ -56,6 +56,7 @@ export function MusicPlaylist() {
             headingId="listen-heading"
             className="text-center md:text-left"
             eyebrow="SoundCloud"
+            eyebrowClassName="text-white/85"
             title="Listen"
             subtitle={
               <>

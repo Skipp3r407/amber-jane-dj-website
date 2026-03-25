@@ -12,6 +12,8 @@ type SectionHeadingProps = {
   className?: string;
   /** Sets `id` on the heading for `aria-labelledby`. */
   headingId?: string;
+  /** Override default cyan eyebrow (e.g. `text-zinc-400` to match a white headline). */
+  eyebrowClassName?: string;
 };
 
 export function SectionHeading({
@@ -22,6 +24,7 @@ export function SectionHeading({
   align = "left",
   className,
   headingId,
+  eyebrowClassName,
 }: SectionHeadingProps) {
   const hasTitle = Boolean(title?.trim()) || Boolean(titleGradient?.trim());
 
@@ -33,7 +36,14 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">{eyebrow}</p>
+        <p
+          className={cn(
+            "text-xs font-semibold uppercase tracking-[0.35em]",
+            eyebrowClassName ?? "text-neon-blue",
+          )}
+        >
+          {eyebrow}
+        </p>
       ) : null}
       {hasTitle ? (
         <HeadlineTitle
