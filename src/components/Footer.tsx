@@ -22,8 +22,6 @@ const footerLinks = [
 const social = [
   { label: "Instagram", href: site.social.instagram },
   { label: "SoundCloud", href: site.social.soundcloud },
-  { label: "Spotify", href: site.social.spotify },
-  { label: "Mixcloud", href: site.social.mixcloud },
 ];
 
 type FooterProps = {

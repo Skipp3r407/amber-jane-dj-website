@@ -24,8 +24,6 @@ export const site = {
   social: {
     instagram: "https://www.instagram.com/dj_amberjane/",
     soundcloud: "https://soundcloud.com/djamberjane1",
-    spotify: "https://open.spotify.com/",
-    mixcloud: "https://www.mixcloud.com/",
   },
   /** Footer design credit */
   credit: {

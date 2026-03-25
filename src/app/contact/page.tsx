@@ -13,8 +13,6 @@ export const metadata: Metadata = {
 const social = [
   { label: "Instagram", href: site.social.instagram },
   { label: "SoundCloud", href: site.social.soundcloud },
-  { label: "Spotify", href: site.social.spotify },
-  { label: "Mixcloud", href: site.social.mixcloud },
 ];
 
 export default function ContactPage() {

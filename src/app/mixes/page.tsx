@@ -11,8 +11,8 @@ import { site, buildKeywords } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: "Mixes | Amber Jane" },
-  description: `Listen to mixes and sets from ${site.name} — embed SoundCloud, Spotify, or Mixcloud players.`,
-  keywords: buildKeywords(["DJ mixes", "SoundCloud", "Spotify", "Mixcloud"]),
+  description: `Listen to mixes and sets from ${site.name} — SoundCloud players and catalog.`,
+  keywords: buildKeywords(["DJ mixes", "SoundCloud"]),
 };
 
 export default function MixesPage() {

@@ -1,7 +1,7 @@
 /**
  * Shared types for mix listings (Mixes page, embeds, home preview).
  */
-export type MixPlatform = "soundcloud" | "spotify" | "mixcloud" | "audio" | "placeholder";
+export type MixPlatform = "soundcloud" | "audio" | "placeholder";
 
 export type MixEntry = {
   id: string;
@@ -11,7 +11,7 @@ export type MixEntry = {
   duration: string;
   year: string;
   platform: MixPlatform;
-  /** SoundCloud: canonical track URL. Spotify/Mixcloud: full iframe embed URL. */
+  /** SoundCloud: canonical track URL. */
   embedUrl: string | null;
   /** Optional direct MP3 for fallback player */
   audioUrl?: string | null;

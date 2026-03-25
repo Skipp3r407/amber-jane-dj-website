@@ -35,7 +35,7 @@ export const matcherTopics: { test: RegExp; reply: string }[] = [
     reply: `Genres are tailored to your crowd — open format, house, dance, throwbacks, R&B, and more. Must-plays and do-not-plays are welcome.`,
   },
   {
-    test: /mix|listen|soundcloud|spotify/i,
+    test: /mix|listen|soundcloud/i,
     reply: `Check the Mixes page for embeds and audio. If you want a specific vibe match for your event, mention it in your inquiry.`,
   },
   {
