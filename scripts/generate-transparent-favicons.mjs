@@ -28,26 +28,17 @@ async function logoToTransparentBuffer() {
   const { width, height, channels } = info;
   if (channels !== 4) throw new Error("Expected RGBA");
 
-  const idx = (x, y) => (y * width + x) * 4;
-  let sum = 0;
-  for (const [x, y] of [
-    [0, 0],
-    [width - 1, 0],
-    [0, height - 1],
-    [width - 1, height - 1],
-  ]) {
-    sum += data[idx(x, y)] + data[idx(x, y) + 1] + data[idx(x, y) + 2];
-  }
-  const avg = sum / 12;
-  const whiteKey = avg > 200;
-  console.log(`Source ${LOGO_SRC}: ${whiteKey ? "white" : "black"} key (corner avg ${avg.toFixed(0)})`);
+  /** Remove both dark and light backgrounds so inner black boxes disappear even when corners are light. */
+  console.log(`Source ${LOGO_SRC}: combined black + white key (header/footer logo file unchanged)`);
 
   const out = new Uint8ClampedArray(data);
   for (let i = 0; i < out.length; i += 4) {
     const r = out[i];
     const g = out[i + 1];
     const b = out[i + 2];
-    out[i + 3] = whiteKey ? keyWhite(r, g, b) : keyBlack(r, g, b);
+    const aBlack = keyBlack(r, g, b);
+    const aWhite = keyWhite(r, g, b);
+    out[i + 3] = Math.min(aBlack, aWhite);
   }
 
   return sharp(Buffer.from(out), {
