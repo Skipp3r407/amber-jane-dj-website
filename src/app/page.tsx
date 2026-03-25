@@ -87,9 +87,13 @@ export default function HomePage() {
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {whyBook.map((w, i) => (
               <SectionReveal key={w.title} delay={i * 0.04} variant={revealVariantFromIndex(i)}>
-                <div className="h-full rounded-2xl border border-white/10 bg-midnight/30 p-6 ring-1 ring-white/5">
-                  <h3 className="font-display text-lg text-foreground">{w.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{w.body}</p>
+                <div className="group h-full rounded-2xl border border-white/10 bg-midnight/30 p-6 ring-1 ring-white/5 transition-all duration-300 ease-out hover:border-neon-pink/45 hover:bg-gradient-to-br hover:from-neon-pink/[0.07] hover:to-neon-purple/[0.08] hover:shadow-[0_0_32px_rgba(255,60,172,0.18),0_0_40px_rgba(123,44,255,0.1)] hover:ring-neon-pink/25">
+                  <h3 className="font-display text-lg text-foreground transition-colors duration-300 group-hover:text-white">
+                    {w.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted transition-colors duration-300 group-hover:text-zinc-300">
+                    {w.body}
+                  </p>
                 </div>
               </SectionReveal>
             ))}
