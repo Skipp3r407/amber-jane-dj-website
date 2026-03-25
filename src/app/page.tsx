@@ -10,7 +10,6 @@ import { EventCard } from "@/components/EventCard";
 import { CTASection } from "@/components/CTASection";
 import { ContactForm } from "@/components/ContactForm";
 import { AvailabilityStrip } from "@/components/AvailabilityStrip";
-import { ReviewHighlightBanner } from "@/components/ReviewHighlightBanner";
 import { services, testimonials, events, whyBook } from "@/data/content";
 import { upcomingEvents } from "@/data/eventsCalendar";
 import { HomeMusicProvider } from "@/components/music/HomeMusicProvider";
@@ -169,8 +168,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <ReviewHighlightBanner />
 
       <section className="border-b border-white/5 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
