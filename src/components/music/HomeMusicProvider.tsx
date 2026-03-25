@@ -77,8 +77,8 @@ export function HomeMusicProvider({ children, audioUrl, trackTitle }: HomeMusicP
         const ctx = new AudioContext();
         const source = ctx.createMediaElementSource(el);
         const analyser = ctx.createAnalyser();
-        analyser.fftSize = 256;
-        analyser.smoothingTimeConstant = 0.45;
+        analyser.fftSize = 512;
+        analyser.smoothingTimeConstant = 0.82;
         analyser.minDecibels = -78;
         source.connect(analyser);
         analyser.connect(ctx.destination);

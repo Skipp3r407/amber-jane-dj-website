@@ -25,13 +25,20 @@ export function SiteMusicShell({ children }: { children: ReactNode }) {
 
   return (
     <HomeMusicProvider audioUrl={audioUrl} trackTitle={trackTitle}>
-      <BackgroundRadioBars />
-      <Navbar className={gutter} />
-      <main className={`relative z-10 ${gutter}`}>{children}</main>
-      <Footer className={gutter} />
-      <FloatingMusicPlayer />
-      <ScrollToTopButton />
-      <ChatWidget />
+      <div className="relative">
+        <div
+          className="pointer-events-none absolute left-0 top-24 z-[55] h-[min(48vh,400px)] w-[4.25rem] opacity-[0.35] sm:top-28 sm:h-[min(50vh,420px)] sm:w-24 md:top-32 md:h-[min(52vh,420px)] md:w-28"
+          aria-hidden
+        >
+          <BackgroundRadioBars />
+        </div>
+        <Navbar className={gutter} />
+        <main className={`relative z-10 ${gutter}`}>{children}</main>
+        <Footer className={gutter} />
+        <FloatingMusicPlayer />
+        <ScrollToTopButton />
+        <ChatWidget />
+      </div>
     </HomeMusicProvider>
   );
 }
