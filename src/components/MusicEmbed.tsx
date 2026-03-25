@@ -14,11 +14,6 @@ function iframeSrc(mix: MixEntry): string | null {
   return mix.embedUrl;
 }
 
-function iframeHeight(mix: MixEntry): number {
-  if (mix.platform === "soundcloud") return 420;
-  return 166;
-}
-
 type MusicEmbedProps = {
   mix: MixEntry;
   className?: string;
@@ -58,8 +53,8 @@ export function MusicEmbed({ mix, className }: MusicEmbedProps) {
               title={`${mix.title} player`}
               src={src}
               width="100%"
-              height={iframeHeight(mix)}
-              className="block min-h-[280px] w-full bg-black sm:min-h-[360px]"
+              height={166}
+              className="block h-[166px] w-full bg-black"
               loading="lazy"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             />

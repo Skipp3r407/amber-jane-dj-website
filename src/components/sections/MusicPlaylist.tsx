@@ -138,12 +138,12 @@ export function MusicPlaylist() {
                 key={`${selectedIndex}-${loadNonce}`}
                 title={`SoundCloud — ${selected.title}`}
                 width="100%"
-                height={420}
+                height={166}
                 scrolling="no"
                 frameBorder="no"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 src={embedSrc}
-                className="block min-h-[280px] w-full bg-black sm:min-h-[360px]"
+                className="block h-[166px] w-full bg-black"
               />
             </div>
           </div>
