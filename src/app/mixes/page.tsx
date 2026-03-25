@@ -28,7 +28,7 @@ export default function MixesPage() {
             eyebrow="Mixes"
             title="Music &"
             titleGradient="signature sound"
-            subtitle="Featured mixes and full players from SoundCloud, Spotify, and more — browse below and hit play."
+            subtitle="Full SoundCloud catalog — every track below has a live player. Tap play on the widget to listen."
           />
         </SectionReveal>
 
