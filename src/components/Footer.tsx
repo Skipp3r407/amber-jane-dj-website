@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 
@@ -25,7 +26,15 @@ export function Footer() {
     <footer className="relative z-10 border-t border-white/10 bg-midnight/40">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
-          <p className="font-display text-lg tracking-[0.15em] text-foreground">{site.name}</p>
+          <Link href="/" className="inline-block outline-none ring-offset-2 ring-offset-midnight/40 focus-visible:ring-2 focus-visible:ring-neon-blue/60">
+            <Image
+              src="/images/amber-jane-logo.png"
+              alt={site.name}
+              width={220}
+              height={88}
+              className="h-10 w-auto max-w-[220px] object-contain object-left sm:h-11"
+            />
+          </Link>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
             Premium DJ and music entertainment for private events, nightlife, weddings, and
             corporate experiences — built for the dance floor, polished for the room.

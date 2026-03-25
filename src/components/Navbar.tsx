@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -43,14 +44,18 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href="/" className="group flex items-center gap-2">
-          <span className="font-display text-lg tracking-[0.2em] text-foreground sm:text-xl">
-            AMBER
-            <span className="bg-gradient-to-r from-neon-pink via-violet-soft to-neon-blue bg-clip-text text-transparent">
-              {" "}
-              JANE
-            </span>
-          </span>
+        <Link
+          href="/"
+          className="group flex shrink-0 items-center gap-2 outline-none ring-offset-2 ring-offset-night focus-visible:ring-2 focus-visible:ring-neon-blue/60"
+        >
+          <Image
+            src="/images/amber-jane-logo.png"
+            alt="Amber Jane"
+            width={220}
+            height={88}
+            priority
+            className="h-9 w-auto max-h-10 object-contain object-left transition duration-300 group-hover:brightness-110 sm:h-10 sm:max-h-11"
+          />
         </Link>
 
         <nav className="hidden items-center gap-0.5 xl:flex">
