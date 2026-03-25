@@ -13,9 +13,15 @@ export function MusicPlaylist() {
   const reduce = useReducedMotion();
   const playerRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  /** After a track click, load the widget with auto_play so playback starts from the user gesture. */
+  const [userStartedPlayback, setUserStartedPlayback] = useState(false);
+  /** Bumps iframe remount when re-selecting the same track (replay). */
+  const [loadNonce, setLoadNonce] = useState(0);
 
   const selected = SOUNDCLOUD_PLAYLIST[selectedIndex]!;
-  const embedSrc = buildSoundCloudPlayerSrc(selected.soundcloudUrl);
+  const embedSrc = buildSoundCloudPlayerSrc(selected.soundcloudUrl, {
+    autoPlay: userStartedPlayback,
+  });
 
   const scrollToPlayer = useCallback(() => {
     if (typeof window === "undefined" || !playerRef.current) return;
@@ -25,7 +31,9 @@ export function MusicPlaylist() {
 
   const selectTrack = useCallback(
     (index: number) => {
+      setUserStartedPlayback(true);
       setSelectedIndex(index);
+      setLoadNonce((n) => n + 1);
       requestAnimationFrame(() => {
         scrollToPlayer();
       });
@@ -66,8 +74,8 @@ export function MusicPlaylist() {
         </SectionReveal>
 
         <SectionReveal variant="up" delay={0.04} className="mt-2 block text-center text-xs text-zinc-500 md:text-left">
-          Tap a track to load the player — audio only starts when you press play on the SoundCloud
-          widget (no autoplay).
+          Tap a track to load the player — playback starts automatically once the SoundCloud widget
+          loads (no autoplay until you choose a track).
         </SectionReveal>
 
         <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -163,16 +171,15 @@ export function MusicPlaylist() {
           </div>
           <div className="relative overflow-hidden rounded-xl ring-1 ring-white/10">
             <iframe
-              key={embedSrc}
+              key={`${selectedIndex}-${loadNonce}`}
               title={`SoundCloud — ${selected.title}`}
               width="100%"
               height={420}
               scrolling="no"
               frameBorder="no"
-              allow="autoplay; clipboard-write"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               src={embedSrc}
               className="block min-h-[280px] w-full bg-black sm:min-h-[360px]"
-              loading="lazy"
             />
           </div>
         </div>
