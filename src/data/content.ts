@@ -43,34 +43,6 @@ export const services = [
   },
 ] as const;
 
-/** Preview cards for the home page mixes strip — `listenHref` targets full SoundCloud players on /mixes */
-export const mixesPreview = [
-  {
-    id: "1",
-    title: "Neon Pulse — Live Club Set",
-    genre: "House / Tech House",
-    duration: "58 min",
-    year: "2025",
-    listenHref: "/mixes#mix-1",
-  },
-  {
-    id: "2",
-    title: "Sunset Sessions Vol. 4",
-    genre: "Melodic / Progressive",
-    duration: "62 min",
-    year: "2025",
-    listenHref: "/mixes#mix-2",
-  },
-  {
-    id: "3",
-    title: "Wedding Mixtape — All Night Long",
-    genre: "Open Format",
-    duration: "74 min",
-    year: "2024",
-    listenHref: "/mixes#mix-3",
-  },
-] as const;
-
 export const testimonials = [
   {
     quote:
