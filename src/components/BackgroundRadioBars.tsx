@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils";
 const BAR_COUNT = 40;
 
 /**
- * Left-edge EQ strip (background only). When site audio is playing, bars follow frequency data + hue.
+ * Left-edge EQ strip — transparent, white bars anchored at the top (extend downward).
+ * Reactive mode uses Web Audio levels in white; idle uses CSS pulse.
  */
 export function BackgroundRadioBars() {
   const { getAnalyser, isPlaying, hasAudio } = useHomeMusic();
@@ -17,7 +18,12 @@ export function BackgroundRadioBars() {
   const rafRef = useRef(0);
 
   const bars = useMemo(
-    () => Array.from({ length: BAR_COUNT }, (_, i) => ({ id: i, delay: `${(i * 0.05) % 1.6}s`, duration: `${0.8 + (i % 9) * 0.1}s` })),
+    () =>
+      Array.from({ length: BAR_COUNT }, (_, i) => ({
+        id: i,
+        delay: `${(i * 0.05) % 1.6}s`,
+        duration: `${0.8 + (i % 9) * 0.1}s`,
+      })),
     [],
   );
 
@@ -31,6 +37,7 @@ export function BackgroundRadioBars() {
         el.style.removeProperty("transform");
         el.style.removeProperty("opacity");
         el.style.removeProperty("background");
+        el.style.removeProperty("box-shadow");
       }
       return;
     }
@@ -56,13 +63,13 @@ export function BackgroundRadioBars() {
         for (let j = start; j < end; j++) sum += data[j]!;
         const avg = sum / (end - start);
         const t = avg / 255;
-        const scale = 0.12 + t * 0.88;
+        const scale = 0.1 + t * 0.9;
         el.style.transform = `scaleY(${scale})`;
-        el.style.transformOrigin = "bottom";
-        el.style.opacity = String(0.38 + t * 0.58);
-        const hue1 = 175 + (i / BAR_COUNT) * 100 + t * 55;
-        const hue2 = (hue1 + 45 + t * 30) % 360;
-        el.style.background = `linear-gradient(to top, hsl(${hue1}, 78%, 44%), hsl(${hue2}, 72%, 56%))`;
+        el.style.transformOrigin = "top center";
+        const alpha = 0.35 + t * 0.6;
+        el.style.background = `linear-gradient(to bottom, rgba(255,255,255,${Math.min(0.98, alpha + 0.08)}), rgba(255,255,255,${alpha * 0.75}))`;
+        el.style.opacity = String(0.55 + t * 0.4);
+        el.style.boxShadow = `0 0 ${8 + t * 18}px rgba(255,255,255,${0.08 + t * 0.12})`;
       }
 
       rafRef.current = requestAnimationFrame(tick);
@@ -72,13 +79,13 @@ export function BackgroundRadioBars() {
     return () => {
       stopped = true;
       cancelAnimationFrame(rafRef.current);
-      // Snapshot DOM nodes for cleanup (refs may be reassigned before this runs).
       const snapshot = [...barRefs.current];
       for (const el of snapshot) {
         if (!el) continue;
         el.style.removeProperty("transform");
         el.style.removeProperty("opacity");
         el.style.removeProperty("background");
+        el.style.removeProperty("box-shadow");
       }
     };
   }, [reactive, getAnalyser]);
@@ -87,13 +94,13 @@ export function BackgroundRadioBars() {
 
   return (
     <div
-      className="pointer-events-none fixed left-0 top-0 z-[1] h-full w-14 overflow-hidden sm:w-[4.5rem] md:w-28"
+      className="pointer-events-none fixed left-0 top-0 z-[8] h-full w-[4.25rem] overflow-visible bg-transparent sm:w-24 md:w-28"
       aria-hidden
     >
       <div
         className={cn(
-          "flex h-full w-full flex-row items-end justify-stretch gap-[2px] px-1.5 opacity-[0.13] mix-blend-soft-light sm:gap-1 sm:opacity-[0.17] sm:px-2",
-          "[mask-image:linear-gradient(to_right,black_45%,transparent_100%)]",
+          "flex h-full w-full flex-row items-start justify-stretch gap-[3px] bg-transparent px-1.5 pt-4 sm:gap-1.5 sm:px-2 sm:pt-6",
+          "[mask-image:linear-gradient(to_right,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.65)_55%,transparent_100%)]",
         )}
       >
         {bars.map((b, i) => (
@@ -103,7 +110,7 @@ export function BackgroundRadioBars() {
               barRefs.current[i] = el;
             }}
             className={cn(
-              "block h-full min-h-0 flex-1 rounded-full bg-gradient-to-t from-neon-blue/50 via-neon-purple/40 to-neon-pink/45",
+              "block h-full min-h-0 flex-1 rounded-full bg-gradient-to-b from-white/95 via-white/75 to-white/45 shadow-[0_0_12px_rgba(255,255,255,0.12)]",
               showCss && "eq-bar-bg",
             )}
             style={
