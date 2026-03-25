@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Waveform } from "@/components/Waveform";
 import { HERO_MEDIA_SRC, PremiumMediaFrame } from "@/components/PremiumMediaFrame";
+import { HeroPlayMixButton } from "@/components/music/HeroPlayMixButton";
 
 const trustChips = [
   "Private Events",
@@ -56,13 +57,14 @@ export function HeroSection() {
             ))}
           </ul>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-neon-pink to-neon-purple px-6 py-3 text-sm font-semibold text-white shadow-neon transition hover:scale-[1.02] hover:brightness-110"
             >
               Book Now
             </Link>
+            <HeroPlayMixButton />
             <Link
               href="/mixes"
               className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur transition hover:scale-[1.02] hover:border-neon-blue/50 hover:bg-white/10"

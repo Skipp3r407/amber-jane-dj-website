@@ -19,6 +19,9 @@ import {
   whyBook,
 } from "@/data/content";
 import { upcomingEvents } from "@/data/eventsCalendar";
+import { HomeMusicProvider } from "@/components/music/HomeMusicProvider";
+import { FloatingMusicPlayer } from "@/components/music/FloatingMusicPlayer";
+import { MusicPlaylist } from "@/components/sections/MusicPlaylist";
 import { site, buildKeywords } from "@/lib/site";
 import type { Metadata } from "next";
 
@@ -35,10 +38,17 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const demoAudio = process.env.NEXT_PUBLIC_MIX_DEMO_URL ?? null;
+  const latestMixUrl =
+    process.env.NEXT_PUBLIC_LATEST_MIX_URL ?? process.env.NEXT_PUBLIC_MIX_DEMO_URL ?? null;
+  const latestMixTitle =
+    process.env.NEXT_PUBLIC_LATEST_MIX_TITLE ?? "Neon Pulse — Live Club Set";
 
   return (
-    <>
+    <HomeMusicProvider audioUrl={latestMixUrl} trackTitle={latestMixTitle}>
       <HeroSection />
+      <FloatingMusicPlayer />
+
+      <MusicPlaylist />
 
       <section className="border-b border-white/5 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -240,6 +250,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </>
+    </HomeMusicProvider>
   );
 }
