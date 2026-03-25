@@ -34,7 +34,12 @@ export default function TestimonialsPage() {
         </div>
       </div>
       <div className="mt-16">
-        <CTASection title="Experience it for yourself" secondaryHref="/mixes" secondaryLabel="Hear mixes" />
+        <CTASection
+          title="Experience it"
+          titleGradient="for yourself"
+          secondaryHref="/mixes"
+          secondaryLabel="Hear mixes"
+        />
       </div>
     </div>
   );

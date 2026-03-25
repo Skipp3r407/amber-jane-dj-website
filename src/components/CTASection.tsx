@@ -7,6 +7,8 @@ import { HeadlineTitle } from "@/components/HeadlineTitle";
 type CTASectionProps = {
   eyebrow?: string;
   title: string;
+  /** Optional second line — animated gradient, same pattern as `PageTitle` / hero. */
+  titleGradient?: string;
   subtitle?: string;
   primaryLabel?: string;
   primaryHref?: string;
@@ -17,6 +19,7 @@ type CTASectionProps = {
 export function CTASection({
   eyebrow = "Make it unforgettable",
   title,
+  titleGradient,
   subtitle,
   primaryLabel = "Check Availability",
   primaryHref = "/contact",
@@ -32,6 +35,7 @@ export function CTASection({
           as="h2"
           size="section"
           title={title}
+          titleGradient={titleGradient}
           align="center"
           className="mt-2 mx-auto max-w-3xl"
         />
