@@ -2,6 +2,7 @@ import Link from "next/link";
 import { HeroSection } from "@/components/HeroSection";
 import { ABOUT_SECTION_MEDIA_SRC, PremiumMediaFrame } from "@/components/PremiumMediaFrame";
 import { SectionReveal } from "@/components/SectionReveal";
+import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { SectionHeading } from "@/components/SectionHeading";
 import { MusicCard } from "@/components/MusicCard";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -53,17 +54,21 @@ export default function HomePage() {
       <section className="border-b border-white/5 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <SectionHeading
-              eyebrow="Mixes & music"
-              title="Featured mixes"
-              subtitle="Floor-tested energy — embed your SoundCloud, Spotify, or Mixcloud players on the Mixes page when ready."
-            />
-            <Link
-              href="/mixes"
-              className="inline-flex w-fit rounded-full border border-white/15 px-5 py-2 text-sm font-semibold text-foreground transition hover:scale-[1.02] hover:border-neon-pink/50"
-            >
-              All music
-            </Link>
+            <SectionReveal variant="left" className="min-w-0 flex-1">
+              <SectionHeading
+                eyebrow="Mixes & music"
+                title="Featured mixes"
+                subtitle="Floor-tested energy — embed your SoundCloud, Spotify, or Mixcloud players on the Mixes page when ready."
+              />
+            </SectionReveal>
+            <SectionReveal variant="right" delay={0.05} className="shrink-0">
+              <Link
+                href="/mixes"
+                className="inline-flex w-fit rounded-full border border-white/15 px-5 py-2 text-sm font-semibold text-foreground transition hover:scale-[1.02] hover:border-neon-pink/50"
+              >
+                All music
+              </Link>
+            </SectionReveal>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {mixesPreview.map((m, i) => (
@@ -83,11 +88,13 @@ export default function HomePage() {
 
       <section className="border-b border-white/5 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="Bookings"
-            title="Built for your night"
-            subtitle="From intimate lounges to headline rooms — flexible formats, polished production, and a set that matches your crowd."
-          />
+          <SectionReveal variant="down">
+            <SectionHeading
+              eyebrow="Bookings"
+              title="Built for your night"
+              subtitle="From intimate lounges to headline rooms — flexible formats, polished production, and a set that matches your crowd."
+            />
+          </SectionReveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             {services.slice(0, 4).map((s, i) => (
               <SectionReveal key={s.title} delay={i * 0.05} variant={i % 2 === 0 ? "left" : "right"}>
@@ -101,25 +108,29 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link
-              href="/services"
-              className="inline-flex rounded-full bg-white/5 px-6 py-3 text-sm font-semibold text-foreground ring-1 ring-white/10 transition hover:scale-[1.02] hover:bg-white/10"
-            >
-              Explore bookings
-            </Link>
+            <SectionReveal variant="up" className="inline-block">
+              <Link
+                href="/services"
+                className="inline-flex rounded-full bg-white/5 px-6 py-3 text-sm font-semibold text-foreground ring-1 ring-white/10 transition hover:scale-[1.02] hover:bg-white/10"
+              >
+                Explore bookings
+              </Link>
+            </SectionReveal>
           </div>
         </div>
       </section>
 
       <section className="border-b border-white/5 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="Why Amber Jane"
-            title="Performance you can trust"
-          />
+          <SectionReveal variant="right">
+            <SectionHeading
+              eyebrow="Why Amber Jane"
+              title="Performance you can trust"
+            />
+          </SectionReveal>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {whyBook.map((w, i) => (
-              <SectionReveal key={w.title} delay={i * 0.04}>
+              <SectionReveal key={w.title} delay={i * 0.04} variant={revealVariantFromIndex(i)}>
                 <div className="h-full rounded-2xl border border-white/10 bg-midnight/30 p-6 ring-1 ring-white/5">
                   <h3 className="font-display text-lg text-foreground">{w.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{w.body}</p>
@@ -171,21 +182,25 @@ export default function HomePage() {
       <section className="border-b border-white/5 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <SectionHeading
-              eyebrow="Experience"
-              title="Recent highlights"
-              subtitle="A snapshot of recent rooms — swap in your real credits anytime."
-            />
-            <Link
-              href="/events"
-              className="text-sm font-semibold text-neon-blue hover:underline"
-            >
-              Full events
-            </Link>
+            <SectionReveal variant="left" className="min-w-0 flex-1">
+              <SectionHeading
+                eyebrow="Experience"
+                title="Recent highlights"
+                subtitle="A snapshot of recent rooms — swap in your real credits anytime."
+              />
+            </SectionReveal>
+            <SectionReveal variant="right" delay={0.05} className="shrink-0">
+              <Link
+                href="/events"
+                className="text-sm font-semibold text-neon-blue hover:underline"
+              >
+                Full events
+              </Link>
+            </SectionReveal>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             {events.map((e, i) => (
-              <SectionReveal key={e.title} delay={i * 0.05}>
+              <SectionReveal key={e.title} delay={i * 0.05} variant={revealVariantFromIndex(i)}>
                 <EventCard
                   title={e.title}
                   location={e.location}
@@ -203,17 +218,21 @@ export default function HomePage() {
       <section className="border-b border-white/5 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <SectionHeading eyebrow="Testimonials" title="Proof on the floor" />
-            <Link
-              href="/testimonials"
-              className="text-sm font-semibold text-neon-blue hover:underline"
-            >
-              More reviews
-            </Link>
+            <SectionReveal variant="down" className="min-w-0 flex-1">
+              <SectionHeading eyebrow="Testimonials" title="Proof on the floor" />
+            </SectionReveal>
+            <SectionReveal variant="up" delay={0.05} className="shrink-0">
+              <Link
+                href="/testimonials"
+                className="text-sm font-semibold text-neon-blue hover:underline"
+              >
+                More reviews
+              </Link>
+            </SectionReveal>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {testimonials.map((t, i) => (
-              <SectionReveal key={t.name} delay={i * 0.06}>
+              <SectionReveal key={t.name} delay={i * 0.06} variant={revealVariantFromIndex(i)}>
                 <TestimonialCard quote={t.quote} name={t.name} role={t.role} />
               </SectionReveal>
             ))}
@@ -232,22 +251,24 @@ export default function HomePage() {
 
       <section id="contact" className="py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="Contact"
-            title="Let’s plan your event"
-            subtitle={
-              <>
-                Tell us what you&apos;re dreaming up — we&apos;ll reply with availability and next
-                steps. Prefer email?{" "}
-                <a className="text-neon-blue hover:underline" href={`mailto:${site.email}`}>
-                  {site.email}
-                </a>
-              </>
-            }
-          />
-          <div className="mt-10 max-w-2xl">
+          <SectionReveal variant="left">
+            <SectionHeading
+              eyebrow="Contact"
+              title="Let’s plan your event"
+              subtitle={
+                <>
+                  Tell us what you&apos;re dreaming up — we&apos;ll reply with availability and next
+                  steps. Prefer email?{" "}
+                  <a className="text-neon-blue hover:underline" href={`mailto:${site.email}`}>
+                    {site.email}
+                  </a>
+                </>
+              }
+            />
+          </SectionReveal>
+          <SectionReveal variant="right" delay={0.08} className="mt-10 max-w-2xl">
             <ContactForm />
-          </div>
+          </SectionReveal>
         </div>
       </section>
     </HomeMusicProvider>

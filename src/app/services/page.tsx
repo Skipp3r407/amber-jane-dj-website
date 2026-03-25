@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionReveal } from "@/components/SectionReveal";
+import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -26,7 +27,7 @@ export default function ServicesPage() {
   return (
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal>
+        <SectionReveal variant="left">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
             Bookings
           </p>
@@ -40,7 +41,7 @@ export default function ServicesPage() {
         </SectionReveal>
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {services.map((s, i) => (
-            <SectionReveal key={s.title} delay={i * 0.05}>
+            <SectionReveal key={s.title} delay={i * 0.05} variant={revealVariantFromIndex(i)}>
               <ServiceCard
                 title={s.title}
                 description={s.description}
@@ -51,7 +52,7 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        <section className="mt-16 rounded-3xl border border-white/10 bg-midnight/25 p-8 sm:p-10">
+        <SectionReveal variant="down" className="mt-16 block rounded-3xl border border-white/10 bg-midnight/25 p-8 sm:p-10">
           <h2 className="font-display text-2xl text-foreground">Booking process</h2>
           <ol className="mt-6 grid gap-6 sm:grid-cols-2">
             {bookingSteps.map((b, i) => (
@@ -73,20 +74,22 @@ export default function ServicesPage() {
             </Link>
             .
           </p>
-        </section>
+        </SectionReveal>
 
         <div className="mt-16">
-          <h2 className="font-display text-2xl text-foreground">Quick answers</h2>
-          <p className="mt-2 text-sm text-muted">
-            Full FAQ on the{" "}
-            <Link href="/faq" className="text-neon-blue hover:underline">
-              FAQ page
-            </Link>
-            .
-          </p>
-          <div className="mt-6">
+          <SectionReveal variant="right">
+            <h2 className="font-display text-2xl text-foreground">Quick answers</h2>
+            <p className="mt-2 text-sm text-muted">
+              Full FAQ on the{" "}
+              <Link href="/faq" className="text-neon-blue hover:underline">
+                FAQ page
+              </Link>
+              .
+            </p>
+          </SectionReveal>
+          <SectionReveal variant="up" delay={0.06} className="mt-6">
             <FAQAccordion items={snippet} />
-          </div>
+          </SectionReveal>
         </div>
       </div>
       <div className="mt-16">

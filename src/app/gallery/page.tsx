@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { CTASection } from "@/components/CTASection";
 import { site, buildKeywords } from "@/lib/site";
 
@@ -33,7 +34,7 @@ export default function GalleryPage() {
   return (
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal>
+        <SectionReveal variant="down">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
             Gallery
           </p>
@@ -47,7 +48,7 @@ export default function GalleryPage() {
         </SectionReveal>
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {placeholders.map((p, i) => (
-            <SectionReveal key={p.src} delay={i * 0.05}>
+            <SectionReveal key={p.src} delay={i * 0.05} variant={revealVariantFromIndex(i)}>
               <div className="relative overflow-hidden rounded-2xl border border-white/10">
                 <Image
                   src={p.src}

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { SectionReveal } from "@/components/SectionReveal";
 
 export function ReviewHighlightBanner() {
   const items = [
@@ -17,12 +20,14 @@ export function ReviewHighlightBanner() {
             "linear-gradient(90deg, transparent, rgba(123,44,255,0.4), transparent)",
         }}
       />
-      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 sm:flex-row sm:justify-between sm:px-6">
-        <p className="text-center text-sm font-medium text-zinc-400 sm:text-left">
-          Trusted by hosts, venues, and planners who want energy{" "}
-          <span className="text-foreground">without</span> the chaos.
-        </p>
-        <div className="flex flex-wrap justify-center gap-2 sm:justify-end">
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 sm:flex-row sm:flex-wrap sm:justify-between sm:px-6">
+        <SectionReveal variant="left" className="w-full text-center sm:max-w-md sm:flex-1 sm:text-left">
+          <p className="text-sm font-medium text-zinc-400">
+            Trusted by hosts, venues, and planners who want energy{" "}
+            <span className="text-foreground">without</span> the chaos.
+          </p>
+        </SectionReveal>
+        <SectionReveal variant="right" delay={0.06} className="flex w-full flex-wrap justify-center gap-2 sm:w-auto sm:justify-end">
           {items.map((t) => (
             <span
               key={t}
@@ -31,13 +36,15 @@ export function ReviewHighlightBanner() {
               {t}
             </span>
           ))}
-        </div>
-        <Link
-          href="/testimonials"
-          className="text-sm font-semibold text-neon-blue hover:underline"
-        >
-          Read reviews
-        </Link>
+        </SectionReveal>
+        <SectionReveal variant="down" delay={0.1} className="w-full text-center sm:w-auto sm:text-right">
+          <Link
+            href="/testimonials"
+            className="text-sm font-semibold text-neon-blue hover:underline"
+          >
+            Read reviews
+          </Link>
+        </SectionReveal>
       </div>
     </div>
   );

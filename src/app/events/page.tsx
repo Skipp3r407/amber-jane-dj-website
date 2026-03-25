@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { EventCard } from "@/components/EventCard";
 import { CTASection } from "@/components/CTASection";
 import { upcomingEvents, pastEvents } from "@/data/eventsCalendar";
@@ -16,7 +17,7 @@ export default function EventsPage() {
   return (
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal>
+        <SectionReveal variant="down">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
             Events
           </p>
@@ -34,20 +35,22 @@ export default function EventsPage() {
 
         <section className="mt-14">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
+            <SectionReveal variant="left" className="min-w-0">
               <h2 className="font-display text-2xl text-foreground">Upcoming</h2>
               <p className="mt-1 text-sm text-muted">Dates and holds — inquire for similar slots.</p>
-            </div>
-            <Link
-              href="/contact"
-              className="inline-flex w-fit rounded-full bg-gradient-to-r from-neon-pink to-neon-purple px-5 py-2.5 text-sm font-semibold text-white shadow-neon transition hover:scale-[1.02]"
-            >
-              Want Amber Jane at your event? Inquire now
-            </Link>
+            </SectionReveal>
+            <SectionReveal variant="right" delay={0.05} className="shrink-0">
+              <Link
+                href="/contact"
+                className="inline-flex w-fit rounded-full bg-gradient-to-r from-neon-pink to-neon-purple px-5 py-2.5 text-sm font-semibold text-white shadow-neon transition hover:scale-[1.02]"
+              >
+                Want Amber Jane at your event? Inquire now
+              </Link>
+            </SectionReveal>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {upcomingEvents.map((e, i) => (
-              <SectionReveal key={e.id} delay={i * 0.05}>
+              <SectionReveal key={e.id} delay={i * 0.05} variant={revealVariantFromIndex(i)}>
                 <EventCard
                   title={e.title}
                   location={e.location}
@@ -61,11 +64,13 @@ export default function EventsPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="font-display text-2xl text-foreground">Past shows</h2>
-          <p className="mt-1 text-sm text-muted">Highlights — proof on the floor.</p>
+          <SectionReveal variant="up">
+            <h2 className="font-display text-2xl text-foreground">Past shows</h2>
+            <p className="mt-1 text-sm text-muted">Highlights — proof on the floor.</p>
+          </SectionReveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {pastEvents.map((e, i) => (
-              <SectionReveal key={e.id} delay={i * 0.04}>
+              <SectionReveal key={e.id} delay={i * 0.04} variant={revealVariantFromIndex(i + 1)}>
                 <EventCard
                   title={e.title}
                   location={e.location}
@@ -78,7 +83,7 @@ export default function EventsPage() {
           </div>
         </section>
 
-        <section className="mt-16 rounded-3xl border border-dashed border-white/15 bg-night/50 p-8 text-center">
+        <SectionReveal variant="down" className="mt-16 block rounded-3xl border border-dashed border-white/15 bg-night/50 p-8 text-center">
           <p className="font-display text-lg text-foreground">Gallery</p>
           <p className="mt-2 text-sm text-muted">
             Add photography and video stills on the{" "}
@@ -87,7 +92,7 @@ export default function EventsPage() {
             </Link>{" "}
             page.
           </p>
-        </section>
+        </SectionReveal>
       </div>
       <div className="mt-16">
         <CTASection

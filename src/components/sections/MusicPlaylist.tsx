@@ -2,8 +2,10 @@
 
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import { SOUNDCLOUD_PLAYLIST, SOUNDCLOUD_PROFILE } from "@/data/soundcloudPlaylist";
+import { SectionReveal } from "@/components/SectionReveal";
+import { revealVariantFromIndex } from "@/lib/revealVariants";
 
 function buildEmbedSrc(trackUrl: string) {
   const params = new URLSearchParams({
@@ -51,45 +53,47 @@ export function MusicPlaylist() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(123,44,255,0.12),transparent)]" />
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon-pink/30 to-transparent" />
 
-      <motion.div
-        className="relative mx-auto max-w-6xl px-4 sm:px-6"
-        initial={reduce ? false : { opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div className="text-center md:text-left">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">SoundCloud</p>
-          <h2
-            id="listen-heading"
-            className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
-          >
-            Listen
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-base text-muted md:mx-0">
-            Mixes, tributes, and reposts from{" "}
-            <a
-              href={SOUNDCLOUD_PROFILE}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neon-blue underline-offset-2 hover:underline"
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionReveal variant="down">
+          <div className="text-center md:text-left">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">SoundCloud</p>
+            <h2
+              id="listen-heading"
+              className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
             >
-              Amber Jane on SoundCloud
-            </a>
-            — including collaborator uploads where tracks live on their pages.
-          </p>
-        </div>
+              Listen
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-base text-muted md:mx-0">
+              Mixes, tributes, and reposts from{" "}
+              <a
+                href={SOUNDCLOUD_PROFILE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neon-blue underline-offset-2 hover:underline"
+              >
+                Amber Jane on SoundCloud
+              </a>
+              — including collaborator uploads where tracks live on their pages.
+            </p>
+          </div>
+        </SectionReveal>
 
-        <p className="mt-2 text-center text-xs text-zinc-500 md:text-left">
+        <SectionReveal variant="up" delay={0.04} className="mt-2 block text-center text-xs text-zinc-500 md:text-left">
           Tap a track to load the player — audio only starts when you press play on the SoundCloud
           widget (no autoplay).
-        </p>
+        </SectionReveal>
 
         <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {SOUNDCLOUD_PLAYLIST.map((track, index) => {
             const active = index === selectedIndex;
             return (
-              <li key={track.id}>
+              <SectionReveal
+                key={track.id}
+                as="li"
+                variant={revealVariantFromIndex(index)}
+                delay={index * 0.04}
+                className="min-w-0"
+              >
                 <button
                   type="button"
                   onClick={() => selectTrack(index)}
@@ -139,30 +143,33 @@ export function MusicPlaylist() {
                     </span>
                   </span>
                 </button>
-              </li>
+              </SectionReveal>
             );
           })}
         </ul>
 
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-          <Link
-            href={SOUNDCLOUD_PROFILE}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-2.5 text-sm font-semibold text-foreground transition hover:scale-[1.02] hover:border-neon-blue/40 hover:bg-white/10"
-          >
-            View Full SoundCloud
-          </Link>
-          <p className="text-center text-xs text-zinc-500 sm:text-right">
+          <SectionReveal variant="left" className="w-full sm:w-auto">
+            <Link
+              href={SOUNDCLOUD_PROFILE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-2.5 text-sm font-semibold text-foreground transition hover:scale-[1.02] hover:border-neon-blue/40 hover:bg-white/10 sm:w-auto"
+            >
+              View Full SoundCloud
+            </Link>
+          </SectionReveal>
+          <SectionReveal variant="right" delay={0.05} className="text-center text-xs text-zinc-500 sm:text-right">
             Follow for drops, tributes, and live recordings.
-          </p>
+          </SectionReveal>
         </div>
 
-        <div
-          ref={playerRef}
-          id="soundcloud-player-anchor"
-          className="mt-10 scroll-mt-24 rounded-2xl border border-white/10 bg-night/60 p-3 shadow-[0_0_40px_rgba(0,0,0,0.35)] ring-1 ring-white/10 backdrop-blur-md sm:p-4"
-        >
+        <SectionReveal variant="up" delay={0.06} className="mt-10 block">
+          <div
+            ref={playerRef}
+            id="soundcloud-player-anchor"
+            className="scroll-mt-24 rounded-2xl border border-white/10 bg-night/60 p-3 shadow-[0_0_40px_rgba(0,0,0,0.35)] ring-1 ring-white/10 backdrop-blur-md sm:p-4"
+          >
           <div className="mb-2 flex flex-wrap items-center justify-between gap-2 px-1">
             <p className="text-xs font-semibold uppercase tracking-widest text-neon-blue">Player</p>
             <p className="truncate font-display text-sm text-foreground sm:text-base">{selected.title}</p>
@@ -182,7 +189,8 @@ export function MusicPlaylist() {
             />
           </div>
         </div>
-      </motion.div>
+        </SectionReveal>
+      </div>
     </section>
   );
 }

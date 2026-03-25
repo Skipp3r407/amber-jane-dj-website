@@ -15,7 +15,7 @@ export default function FaqPage() {
   return (
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <SectionReveal>
+        <SectionReveal variant="left">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">FAQ</p>
           <h1 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
             Questions, answered
@@ -24,9 +24,9 @@ export default function FaqPage() {
             Straightforward — for anything custom, use the contact form or Amber Assistant.
           </p>
         </SectionReveal>
-        <div className="mt-12">
+        <SectionReveal variant="right" delay={0.06} className="mt-12">
           <FAQAccordion items={faqItems} />
-        </div>
+        </SectionReveal>
       </div>
       <div className="mt-16">
         <CTASection

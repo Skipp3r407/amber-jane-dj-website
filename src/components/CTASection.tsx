@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { SectionReveal } from "@/components/SectionReveal";
 
 type CTASectionProps = {
   eyebrow?: string;
@@ -22,7 +25,7 @@ export function CTASection({
   return (
     <section className="relative overflow-hidden border-y border-white/10 bg-gradient-to-br from-midnight/80 via-night to-neon-blue/10">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,60,172,0.18),_transparent_55%)]" />
-      <div className="relative mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <SectionReveal variant="up" className="relative mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20">
         <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">{eyebrow}</p>
         <h2 className="mt-2 font-display text-3xl font-bold text-foreground sm:text-4xl">{title}</h2>
         {subtitle ? (
@@ -42,7 +45,7 @@ export function CTASection({
             {secondaryLabel}
           </Link>
         </div>
-      </div>
+      </SectionReveal>
     </section>
   );
 }

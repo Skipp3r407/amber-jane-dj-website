@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { MusicEmbed } from "@/components/MusicEmbed";
 import { MusicCard } from "@/components/MusicCard";
 import { GenreTagList } from "@/components/GenreTagList";
@@ -20,7 +21,7 @@ export default function MixesPage() {
   return (
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal>
+        <SectionReveal variant="down">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">Mixes</p>
           <h1 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
             Music & signature sound
@@ -38,30 +39,32 @@ export default function MixesPage() {
           </p>
         </SectionReveal>
 
-        <section className="mt-12 rounded-3xl border border-white/10 bg-midnight/20 p-8 sm:p-10">
+        <SectionReveal variant="left" className="mt-12 block rounded-3xl border border-white/10 bg-midnight/20 p-8 sm:p-10">
           <h2 className="font-display text-xl text-foreground sm:text-2xl">Signature sound & genres</h2>
           <p className="mt-2 max-w-2xl text-sm text-muted">
             Sets are tailored to your crowd — these tags are a starting point for direction and mood.
           </p>
           <GenreTagList genres={signatureGenres} className="mt-6" />
-        </section>
+        </SectionReveal>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-1">
           {mixes.map((m, i) => (
-            <SectionReveal key={m.id} delay={i * 0.06}>
+            <SectionReveal key={m.id} delay={i * 0.06} variant={revealVariantFromIndex(i)}>
               <MusicEmbed mix={m} />
             </SectionReveal>
           ))}
         </div>
 
         <div className="mt-14">
-          <h2 className="font-display text-xl text-foreground">Compact players</h2>
-          <p className="mt-2 text-sm text-muted">
-            Alternate card layout — first card can use a direct MP3 URL for a lightweight demo.
-          </p>
+          <SectionReveal variant="right">
+            <h2 className="font-display text-xl text-foreground">Compact players</h2>
+            <p className="mt-2 text-sm text-muted">
+              Alternate card layout — first card can use a direct MP3 URL for a lightweight demo.
+            </p>
+          </SectionReveal>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
             {mixesPreview.map((m, i) => (
-              <SectionReveal key={m.id} delay={i * 0.05}>
+              <SectionReveal key={m.id} delay={i * 0.05} variant={revealVariantFromIndex(i + 2)}>
                 <MusicCard
                   title={m.title}
                   genre={m.genre}

@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import type { CalendarEvent } from "@/data/eventsCalendar";
+import { SectionReveal } from "@/components/SectionReveal";
+import { revealVariantFromIndex } from "@/lib/revealVariants";
 
 type AvailabilityStripProps = {
   events: CalendarEvent[];
@@ -12,7 +16,7 @@ export function AvailabilityStrip({ events }: AvailabilityStripProps) {
     <section className="border-y border-white/10 bg-midnight/30">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
+          <SectionReveal variant="left" className="min-w-0 flex-1">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
               Availability & upcoming
             </p>
@@ -22,18 +26,23 @@ export function AvailabilityStrip({ events }: AvailabilityStripProps) {
             <p className="mt-2 max-w-xl text-sm text-muted">
               Dates move fast — inquire early for peak weekends and festival season.
             </p>
-          </div>
-          <Link
-            href="/contact"
-            className="inline-flex w-fit shrink-0 rounded-full bg-gradient-to-r from-neon-pink to-neon-purple px-6 py-3 text-sm font-semibold text-white shadow-neon transition hover:brightness-110"
-          >
-            Want Amber Jane at your event? Inquire now
-          </Link>
+          </SectionReveal>
+          <SectionReveal variant="right" delay={0.05} className="shrink-0">
+            <Link
+              href="/contact"
+              className="inline-flex w-fit rounded-full bg-gradient-to-r from-neon-pink to-neon-purple px-6 py-3 text-sm font-semibold text-white shadow-neon transition hover:brightness-110"
+            >
+              Want Amber Jane at your event? Inquire now
+            </Link>
+          </SectionReveal>
         </div>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-          {events.map((e) => (
-            <li
+          {events.map((e, i) => (
+            <SectionReveal
               key={e.id}
+              as="li"
+              variant={revealVariantFromIndex(i)}
+              delay={i * 0.05}
               className="rounded-2xl border border-white/10 bg-night/60 px-4 py-4"
             >
               <div className="flex flex-wrap items-center gap-2">
@@ -51,7 +60,7 @@ export function AvailabilityStrip({ events }: AvailabilityStripProps) {
                 {e.location} · {e.dateLabel}
               </p>
               <p className="mt-2 text-sm text-neon-blue">{e.highlight}</p>
-            </li>
+            </SectionReveal>
           ))}
         </ul>
       </div>

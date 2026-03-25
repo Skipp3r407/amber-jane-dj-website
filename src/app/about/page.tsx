@@ -14,7 +14,7 @@ export default function AboutPage() {
   return (
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal>
+        <SectionReveal variant="down">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">About</p>
           <h1 className="mt-3 font-display text-4xl text-white sm:text-5xl">Amber Jane</h1>
           <p className="mt-4 max-w-2xl text-lg text-zinc-400">
@@ -25,7 +25,7 @@ export default function AboutPage() {
         </SectionReveal>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-center">
-          <SectionReveal delay={0.05}>
+          <SectionReveal delay={0.05} variant="left">
             <div className="relative overflow-hidden rounded-3xl border border-white/10">
               <Image
                 src="/images/amber2.png"
@@ -37,7 +37,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-transparent" />
             </div>
           </SectionReveal>
-          <SectionReveal delay={0.1}>
+          <SectionReveal delay={0.1} variant="right">
             <h2 className="font-display text-2xl text-white">The approach</h2>
             <ul className="mt-4 space-y-3 text-zinc-400">
               <li>

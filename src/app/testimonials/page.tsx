@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { CTASection } from "@/components/CTASection";
 import { testimonials } from "@/data/content";
@@ -15,7 +16,7 @@ export default function TestimonialsPage() {
   return (
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal>
+        <SectionReveal variant="up">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
             Testimonials
           </p>
@@ -26,7 +27,7 @@ export default function TestimonialsPage() {
         </SectionReveal>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
-            <SectionReveal key={t.name} delay={i * 0.06}>
+            <SectionReveal key={t.name} delay={i * 0.06} variant={revealVariantFromIndex(i)}>
               <TestimonialCard quote={t.quote} name={t.name} role={t.role} />
             </SectionReveal>
           ))}

@@ -20,7 +20,7 @@ export default function ContactPage() {
   return (
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal>
+        <SectionReveal variant="down">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
             Contact
           </p>
@@ -58,9 +58,9 @@ export default function ContactPage() {
             ))}
           </ul>
         </SectionReveal>
-        <div className="mt-10 max-w-2xl">
+        <SectionReveal variant="up" delay={0.08} className="mt-10 max-w-2xl">
           <ContactForm />
-        </div>
+        </SectionReveal>
       </div>
     </div>
   );

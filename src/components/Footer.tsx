@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { SectionReveal } from "@/components/SectionReveal";
 import { site } from "@/lib/site";
 
 const footerLinks = [
@@ -25,7 +28,7 @@ export function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 bg-midnight/40">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
-        <div className="lg:col-span-2">
+        <SectionReveal variant="left" className="lg:col-span-2">
           <Link
             href="/"
             className="inline-block outline-none ring-offset-2 ring-offset-midnight/40 focus-visible:ring-2 focus-visible:ring-neon-blue/60"
@@ -48,8 +51,8 @@ export function Footer() {
           >
             Book Amber Jane
           </Link>
-        </div>
-        <div>
+        </SectionReveal>
+        <SectionReveal variant="up" delay={0.05}>
           <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Explore</p>
           <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
             {footerLinks.map((l) => (
@@ -60,8 +63,8 @@ export function Footer() {
               </li>
             ))}
           </ul>
-        </div>
-        <div>
+        </SectionReveal>
+        <SectionReveal variant="right" delay={0.08}>
           <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Booking</p>
           <p className="mt-4 text-sm text-zinc-300">
             <a className="hover:text-white" href={`mailto:${site.email}`}>
@@ -93,10 +96,10 @@ export function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </SectionReveal>
       </div>
       <div className="border-t border-white/5 py-6">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-center text-xs text-zinc-500 sm:flex-row sm:text-left sm:px-6">
+        <SectionReveal variant="down" className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-center text-xs text-zinc-500 sm:flex-row sm:text-left sm:px-6">
           <p>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
@@ -119,7 +122,7 @@ export function Footer() {
               </span>
             </a>
           </p>
-        </div>
+        </SectionReveal>
       </div>
     </footer>
   );
