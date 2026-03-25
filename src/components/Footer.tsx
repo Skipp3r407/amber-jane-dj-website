@@ -26,13 +26,16 @@ export function Footer() {
     <footer className="relative z-10 border-t border-white/10 bg-midnight/40">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
-          <Link href="/" className="inline-block outline-none ring-offset-2 ring-offset-midnight/40 focus-visible:ring-2 focus-visible:ring-neon-blue/60">
+          <Link
+            href="/"
+            className="inline-block outline-none ring-offset-2 ring-offset-midnight/40 focus-visible:ring-2 focus-visible:ring-neon-blue/60"
+          >
             <Image
-              src="/images/amber-jane-logo.png"
+              src="/images/logo.png"
               alt={site.name}
-              width={900}
-              height={360}
-              className="h-auto w-auto max-h-28 object-contain object-left [mix-blend-mode:screen] sm:max-h-36"
+              width={960}
+              height={384}
+              className="h-auto w-auto max-h-32 object-contain object-left sm:max-h-40"
             />
           </Link>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
@@ -97,9 +100,23 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p>
-            <a href={site.credit.href} className="hover:text-zinc-400">
-              {site.credit.label}
+          <p className="max-w-xs text-xs leading-relaxed text-white/60 sm:max-w-none">
+            Website Design by{" "}
+            <a
+              href={site.credit.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-0.5 font-medium text-zinc-400 transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.7)] motion-reduce:transition-none motion-reduce:hover:scale-100"
+            >
+              <span className="underline decoration-transparent underline-offset-2 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-neon-blue group-hover:to-neon-purple group-hover:bg-clip-text group-hover:text-transparent group-hover:decoration-transparent group-hover:[filter:drop-shadow(0_0_10px_rgba(0,194,255,0.45))_drop-shadow(0_0_14px_rgba(123,44,255,0.35))]">
+                {site.credit.designer}
+              </span>
+              <span
+                className="inline text-[0.65rem] leading-none opacity-40 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
+                aria-hidden
+              >
+                ↗
+              </span>
             </a>
           </p>
         </div>

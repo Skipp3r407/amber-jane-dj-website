@@ -27,10 +27,10 @@ export const site = {
     spotify: "https://open.spotify.com/",
     mixcloud: "https://www.mixcloud.com/",
   },
-  /** Replace in footer — e.g. your studio name + link */
+  /** Footer design credit */
   credit: {
-    label: "Site by Your Studio",
-    href: "https://example.com",
+    designer: "Elevate Digital Studio",
+    href: "https://elevatedigitalstudios.net/",
   },
 };
 

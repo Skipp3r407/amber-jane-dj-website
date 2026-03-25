@@ -46,15 +46,15 @@ export function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:py-4">
         <Link
           href="/"
-          className="group relative flex shrink-0 items-center outline-none ring-offset-2 ring-offset-night focus-visible:ring-2 focus-visible:ring-neon-blue/60 [-webkit-tap-highlight-color:transparent]"
+          className="group flex shrink-0 items-center outline-none ring-offset-2 ring-offset-night focus-visible:ring-2 focus-visible:ring-neon-blue/60"
         >
           <Image
-            src="/images/amber-jane-logo.png"
+            src="/images/logo.png"
             alt="Amber Jane"
-            width={900}
-            height={360}
+            width={960}
+            height={384}
             priority
-            className="h-auto w-auto max-h-24 object-contain object-left transition duration-300 [mix-blend-mode:screen] group-hover:brightness-110 sm:max-h-36 md:max-h-44 lg:max-h-[11.25rem]"
+            className="h-auto w-auto max-h-28 object-contain object-left transition duration-300 group-hover:brightness-110 sm:max-h-40 md:max-h-48 lg:max-h-[12rem]"
           />
         </Link>
 
