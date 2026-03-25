@@ -66,8 +66,9 @@ export function Navbar() {
                 key={l.href}
                 href={l.href}
                 className={cn(
-                  "relative rounded-full px-2.5 py-2 text-xs font-medium text-zinc-300 transition hover:text-white lg:px-3 lg:text-sm",
-                  active && "text-white",
+                  "relative rounded-full px-2.5 py-2 text-xs font-medium transition-all duration-300 lg:px-3 lg:text-sm",
+                  "hover:bg-gradient-to-r hover:from-neon-pink hover:via-neon-purple hover:to-neon-blue hover:bg-clip-text hover:text-transparent",
+                  active ? "text-white" : "text-zinc-300",
                 )}
               >
                 {active && (
@@ -134,10 +135,9 @@ export function Navbar() {
                   key={l.href}
                   href={l.href}
                   className={cn(
-                    "rounded-lg px-3 py-3 text-sm font-medium",
-                    pathname === l.href
-                      ? "bg-white/10 text-white"
-                      : "text-zinc-300 hover:bg-white/5 hover:text-white",
+                    "rounded-lg px-3 py-3 text-sm font-medium transition-all duration-300",
+                    "hover:bg-gradient-to-r hover:from-neon-pink hover:via-neon-purple hover:to-neon-blue hover:bg-clip-text hover:text-transparent",
+                    pathname === l.href ? "bg-white/10 text-white" : "text-zinc-300",
                   )}
                 >
                   {l.label}
