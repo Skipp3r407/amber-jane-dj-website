@@ -55,10 +55,16 @@ export default function MixesPage() {
               Compact cards for a quick preview — tap the first card to play when a preview track is available.
             </p>
           </SectionReveal>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
+          <div className="mt-6 grid gap-6 md:grid-cols-3 md:items-stretch">
             {mixesPreview.map((m, i) => (
-              <SectionReveal key={m.id} delay={i * 0.05} variant={revealVariantFromIndex(i + 2)}>
+              <SectionReveal
+                key={m.id}
+                className="h-full min-h-0"
+                delay={i * 0.05}
+                variant={revealVariantFromIndex(i + 2)}
+              >
                 <MusicCard
+                  className="h-full"
                   title={m.title}
                   genre={m.genre}
                   duration={m.duration}

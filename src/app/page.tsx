@@ -71,10 +71,16 @@ export default function HomePage() {
               </Link>
             </SectionReveal>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-3 md:items-stretch">
             {mixesPreview.map((m, i) => (
-              <SectionReveal key={m.id} delay={i * 0.06} variant={i % 3 === 1 ? "left" : i % 3 === 2 ? "right" : "up"}>
+              <SectionReveal
+                key={m.id}
+                className="h-full min-h-0"
+                delay={i * 0.06}
+                variant={i % 3 === 1 ? "left" : i % 3 === 2 ? "right" : "up"}
+              >
                 <MusicCard
+                  className="h-full"
                   title={m.title}
                   genre={m.genre}
                   duration={m.duration}
