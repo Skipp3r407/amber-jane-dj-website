@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${orbitron.variable} ${dmSans.variable}`}>
-      <body className="font-sans noise min-h-screen">
+      <body className="font-sans noise min-h-screen overflow-x-hidden">
         <SiteMusicShell>{children}</SiteMusicShell>
       </body>
     </html>
