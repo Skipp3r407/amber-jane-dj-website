@@ -73,10 +73,9 @@ export function Navbar() {
                 )}
               >
                 {active && (
-                  <motion.span
-                    layoutId="nav-pill"
+                  <span
+                    aria-hidden
                     className="absolute inset-0 -z-10 rounded-full bg-neon-pink shadow-[0_0_20px_rgba(255,60,172,0.35)] ring-1 ring-neon-pink/80"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
                 {l.label}
