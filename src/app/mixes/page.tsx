@@ -70,6 +70,7 @@ export default function MixesPage() {
                   duration={m.duration}
                   year={m.year}
                   audioSrc={i === 0 ? demoAudio : null}
+                  listenHref={m.listenHref}
                 />
               </SectionReveal>
             ))}

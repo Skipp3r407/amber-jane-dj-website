@@ -43,7 +43,7 @@ export const services = [
   },
 ] as const;
 
-/** Preview cards for the home page mixes strip */
+/** Preview cards for the home page mixes strip — `listenHref` targets full SoundCloud players on /mixes */
 export const mixesPreview = [
   {
     id: "1",
@@ -51,6 +51,7 @@ export const mixesPreview = [
     genre: "House / Tech House",
     duration: "58 min",
     year: "2025",
+    listenHref: "/mixes#mix-1",
   },
   {
     id: "2",
@@ -58,6 +59,7 @@ export const mixesPreview = [
     genre: "Melodic / Progressive",
     duration: "62 min",
     year: "2025",
+    listenHref: "/mixes#mix-2",
   },
   {
     id: "3",
@@ -65,6 +67,7 @@ export const mixesPreview = [
     genre: "Open Format",
     duration: "74 min",
     year: "2024",
+    listenHref: "/mixes#mix-3",
   },
 ] as const;
 

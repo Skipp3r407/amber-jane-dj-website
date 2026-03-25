@@ -86,6 +86,7 @@ export default function HomePage() {
                   duration={m.duration}
                   year={m.year}
                   audioSrc={i === 0 ? demoAudio : null}
+                  listenHref={m.listenHref}
                 />
               </SectionReveal>
             ))}

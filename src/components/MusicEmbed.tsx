@@ -32,10 +32,11 @@ export function MusicEmbed({ mix, className }: MusicEmbedProps) {
 
   return (
     <motion.article
+      id={`mix-${mix.id}`}
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 400, damping: 28 }}
       className={cn(
-        "overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-midnight/50 to-night/80 shadow-lg shadow-black/30",
+        "scroll-mt-24 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-midnight/50 to-night/80 shadow-lg shadow-black/30 sm:scroll-mt-28",
         className,
       )}
     >

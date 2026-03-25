@@ -22,8 +22,8 @@ export const site = {
   region: "Your Region",
   /** Replace with real URLs — shown in footer & contact */
   social: {
-    instagram: "https://instagram.com/",
-    soundcloud: "https://soundcloud.com/",
+    instagram: "https://www.instagram.com/dj_amberjane/",
+    soundcloud: "https://soundcloud.com/djamberjane1",
     spotify: "https://open.spotify.com/",
     mixcloud: "https://www.mixcloud.com/",
   },

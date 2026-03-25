@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Waveform } from "@/components/Waveform";
@@ -11,6 +12,8 @@ type MusicCardProps = {
   duration: string;
   year: string;
   audioSrc?: string | null;
+  /** Opens the full player on the Mixes page (same track as this card). */
+  listenHref?: string | null;
   className?: string;
 };
 
@@ -20,6 +23,7 @@ export function MusicCard({
   duration,
   year,
   audioSrc,
+  listenHref,
   className,
 }: MusicCardProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -65,19 +69,40 @@ export function MusicCard({
           <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">
             {duration}
           </span>
-          <button
-            type="button"
-            onClick={toggle}
-            disabled={!audioSrc}
-            className={cn(
-              "inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition",
-              audioSrc
-                ? "bg-gradient-to-r from-neon-pink/90 to-neon-purple/90 text-white shadow-neon hover:brightness-110"
-                : "cursor-not-allowed border border-white/10 bg-white/5 text-zinc-500",
-            )}
-          >
-            {audioSrc ? (playing ? "Pause" : "Play") : "Audio soon"}
-          </button>
+          {audioSrc ? (
+            <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
+              <button
+                type="button"
+                onClick={toggle}
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-neon-pink/90 to-neon-purple/90 px-4 py-2 text-sm font-semibold text-white shadow-neon transition hover:brightness-110"
+              >
+                {playing ? "Pause" : "Play"}
+              </button>
+              {listenHref ? (
+                <Link
+                  href={listenHref}
+                  className="inline-flex items-center rounded-full border border-white/20 px-3 py-2 text-xs font-semibold text-foreground transition hover:bg-white/5"
+                >
+                  Listen
+                </Link>
+              ) : null}
+            </div>
+          ) : listenHref ? (
+            <Link
+              href={listenHref}
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-gradient-to-r from-neon-pink/90 to-neon-purple/90 px-4 py-2 text-sm font-semibold text-white shadow-neon transition hover:brightness-110"
+            >
+              Listen
+            </Link>
+          ) : (
+            <button
+              type="button"
+              disabled
+              className="inline-flex shrink-0 cursor-not-allowed items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-500"
+            >
+              Audio soon
+            </button>
+          )}
         </div>
         {audioSrc ? (
           <audio
