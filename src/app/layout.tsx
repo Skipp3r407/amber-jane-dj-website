@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Orbitron } from "next/font/google";
 import "./globals.css";
+import { BackgroundRadioBars } from "@/components/BackgroundRadioBars";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
@@ -56,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${orbitron.variable} ${dmSans.variable}`}>
       <body className="font-sans noise min-h-screen">
+        <BackgroundRadioBars />
         <Navbar />
         <main className="relative z-10">{children}</main>
         <Footer />

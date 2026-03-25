@@ -79,6 +79,32 @@ body {
   }
 }
 
+/* Site-wide decorative EQ bars (BackgroundRadioBars) — behind content, no pointer events */
+.eq-bar-bg {
+  transform-origin: bottom center;
+  animation: eq-bar-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes eq-bar-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 0.95;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eq-bar-bg {
+    animation: none;
+    transform: scaleY(0.22);
+    opacity: 0.35;
+  }
+}
+
 /* Second line of hero-style titles — horizontal magenta → violet (matches home hero) */
 .text-gradient-live {
   background-image: linear-gradient(92deg, #ff3cac 0%, #d946ef 38%, #a78bfa 72%, #7b2cff 100%);
