@@ -92,7 +92,8 @@ export default function ServicesPage() {
       </div>
       <div className="mt-16">
         <CTASection
-          title="Tell us about your event"
+          title="Tell us about"
+          titleGradient="your event"
           subtitle="Date, city, guest count, and vibe — we’ll reply with availability and a custom quote."
         />
       </div>

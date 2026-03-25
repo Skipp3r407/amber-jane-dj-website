@@ -62,7 +62,8 @@ export default function AboutPage() {
       </div>
       <div className="mt-16">
         <CTASection
-          title="Bring the energy to your event"
+          title="Bring the energy to"
+          titleGradient="your event"
           subtitle="Share your vision — we’ll align on format, timeline, and production."
         />
       </div>

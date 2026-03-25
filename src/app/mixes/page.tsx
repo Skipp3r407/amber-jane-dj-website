@@ -46,7 +46,8 @@ export default function MixesPage() {
       </div>
       <div className="mt-16">
         <CTASection
-          title="Want this energy live?"
+          title="Want this energy"
+          titleGradient="live?"
           subtitle="Send your date and venue — we’ll align on format and music direction."
           secondaryLabel="FAQ"
           secondaryHref="/faq"

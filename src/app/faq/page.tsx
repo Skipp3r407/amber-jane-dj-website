@@ -30,7 +30,8 @@ export default function FaqPage() {
       </div>
       <div className="mt-16">
         <CTASection
-          title="Still have questions?"
+          title="Still have"
+          titleGradient="questions?"
           subtitle="We reply quickly — especially for date holds and travel planning."
         />
       </div>

@@ -47,7 +47,8 @@ export default function HomePage() {
           <SectionReveal variant="down">
             <SectionHeading
               eyebrow="Bookings"
-              title="Built for your night"
+              title="Built for your"
+              titleGradient="night"
               subtitle="From intimate lounges to headline rooms — flexible formats, polished production, and a set that matches your crowd."
             />
           </SectionReveal>
@@ -81,7 +82,8 @@ export default function HomePage() {
           <SectionReveal variant="right">
             <SectionHeading
               eyebrow="Why Amber Jane"
-              title="Performance you can trust"
+              title="Performance you can"
+              titleGradient="trust"
             />
           </SectionReveal>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -116,7 +118,8 @@ export default function HomePage() {
           <SectionReveal variant="right">
             <SectionHeading
               eyebrow="About"
-              title="Artist energy, professional execution"
+              title="Artist energy,"
+              titleGradient="professional execution"
             />
             <p className="mt-4 text-muted">
               Amber Jane builds sets with intention — tension, release, and moments that hit. From
@@ -177,7 +180,11 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <SectionReveal variant="down" className="min-w-0 flex-1">
-              <SectionHeading eyebrow="Testimonials" title="Proof on the floor" />
+              <SectionHeading
+                eyebrow="Testimonials"
+                title="Proof on the"
+                titleGradient="floor"
+              />
             </SectionReveal>
             <SectionReveal variant="up" delay={0.05} className="shrink-0">
               <Link
@@ -199,7 +206,8 @@ export default function HomePage() {
       </section>
 
       <CTASection
-        title="Ready to Create an Unforgettable Night?"
+        title="Ready to create"
+        titleGradient="an unforgettable night?"
         subtitle="Share your date, city, and vibe — we’ll follow up with availability and a custom quote."
         primaryLabel="Check Availability"
         primaryHref="/contact"

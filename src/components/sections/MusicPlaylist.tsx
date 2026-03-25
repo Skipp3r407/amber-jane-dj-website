@@ -57,7 +57,8 @@ export function MusicPlaylist() {
             className="text-center md:text-left"
             eyebrow="SoundCloud"
             eyebrowClassName="text-white/85"
-            title="Listen"
+            title="Listen to"
+            titleGradient="the catalog"
             subtitle={
               <>
                 Mixes, tributes, and reposts from{" "}

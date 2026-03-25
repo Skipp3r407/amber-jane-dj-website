@@ -61,7 +61,7 @@ export default function GalleryPage() {
         </div>
       </div>
       <div className="mt-16">
-        <CTASection title="Bring this energy to your event" />
+        <CTASection title="Bring this energy to" titleGradient="your event" />
       </div>
     </div>
   );

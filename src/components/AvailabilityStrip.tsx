@@ -21,7 +21,7 @@ export function AvailabilityStrip({ events }: AvailabilityStripProps) {
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
               Availability & upcoming
             </p>
-            <HeadlineTitle as="h2" size="subsection" title="On the calendar" className="mt-2" />
+            <HeadlineTitle as="h2" size="subsection" title="On the" titleGradient="calendar" className="mt-2" />
             <p className="mt-3 max-w-xl text-base text-muted">
               Dates move fast — inquire early for peak weekends and festival season.
             </p>

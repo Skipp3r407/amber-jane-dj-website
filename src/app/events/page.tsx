@@ -31,7 +31,7 @@ export default function EventsPage() {
         <section className="mt-14">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <SectionReveal variant="left" className="min-w-0">
-              <HeadlineTitle as="h2" size="subsection" titleGradient="Upcoming" />
+              <HeadlineTitle as="h2" size="subsection" title="Upcoming" titleGradient="dates" />
               <p className="mt-1 text-sm text-muted">Dates and holds — inquire for similar slots.</p>
             </SectionReveal>
             <SectionReveal variant="right" delay={0.05} className="shrink-0">
@@ -60,7 +60,7 @@ export default function EventsPage() {
 
         <section className="mt-16">
           <SectionReveal variant="up">
-            <HeadlineTitle as="h2" size="subsection" titleGradient="Past shows" />
+            <HeadlineTitle as="h2" size="subsection" title="Past" titleGradient="shows" />
             <p className="mt-1 text-sm text-muted">Highlights — proof on the floor.</p>
           </SectionReveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -79,7 +79,7 @@ export default function EventsPage() {
         </section>
 
         <SectionReveal variant="down" className="mt-16 block rounded-3xl border border-dashed border-white/15 bg-night/50 p-8 text-center">
-          <HeadlineTitle as="h2" size="subsection" titleGradient="Gallery" align="center" />
+          <HeadlineTitle as="h2" size="subsection" title="Photo" titleGradient="gallery" align="center" />
           <p className="mt-2 text-sm text-muted">
             Add photography and video stills on the{" "}
             <Link href="/gallery" className="text-neon-blue hover:underline">
@@ -91,7 +91,8 @@ export default function EventsPage() {
       </div>
       <div className="mt-16">
         <CTASection
-          title="Available for upcoming events"
+          title="Available for"
+          titleGradient="upcoming events"
           subtitle="Share your vision — we’ll confirm availability and build a custom quote."
         />
       </div>
