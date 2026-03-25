@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionReveal } from "@/components/SectionReveal";
+import { PageTitle } from "@/components/PageTitle";
+import { HeadlineTitle } from "@/components/HeadlineTitle";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CTASection } from "@/components/CTASection";
@@ -28,16 +30,12 @@ export default function ServicesPage() {
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionReveal variant="left">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
-            Bookings
-          </p>
-          <h1 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
-            Services built around your night
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-muted">
-            Every format gets a different energy and structure — quotes are always custom. Share
-            your details and we&apos;ll follow up with availability and pricing guidance.
-          </p>
+          <PageTitle
+            eyebrow="Bookings"
+            title="Services built around"
+            titleGradient="your night"
+            subtitle="Every format gets a different energy and structure — quotes are always custom. Share your details and we'll follow up with availability and pricing guidance."
+          />
         </SectionReveal>
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {services.map((s, i) => (
@@ -53,7 +51,7 @@ export default function ServicesPage() {
         </div>
 
         <SectionReveal variant="down" className="mt-16 block rounded-3xl border border-white/10 bg-midnight/25 p-8 sm:p-10">
-          <h2 className="font-display text-2xl text-foreground">Booking process</h2>
+          <HeadlineTitle as="h2" size="subsection" title="Booking" titleGradient="process" />
           <ol className="mt-6 grid gap-6 sm:grid-cols-2">
             {bookingSteps.map((b, i) => (
               <li key={b.title} className="flex gap-4">
@@ -78,7 +76,7 @@ export default function ServicesPage() {
 
         <div className="mt-16">
           <SectionReveal variant="right">
-            <h2 className="font-display text-2xl text-foreground">Quick answers</h2>
+            <HeadlineTitle as="h2" size="subsection" title="Quick" titleGradient="answers" />
             <p className="mt-2 text-sm text-muted">
               Full FAQ on the{" "}
               <Link href="/faq" className="text-neon-blue hover:underline">

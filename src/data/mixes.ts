@@ -1,5 +1,5 @@
 /**
- * Mix & embed configuration — paste SoundCloud / Spotify / Mixcloud embed URLs when ready.
+ * Mix entries and embed URLs for the Mixes page.
  * Spotify: use open.spotify.com/embed/... URLs
  * SoundCloud: use w.soundcloud.com/player/?url=... or share embed src from SoundCloud
  * Mixcloud: use widget iframe src from Mixcloud embed code

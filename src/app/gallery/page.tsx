@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { PageTitle } from "@/components/PageTitle";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { CTASection } from "@/components/CTASection";
 import { site, buildKeywords } from "@/lib/site";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   keywords: buildKeywords(["DJ photos", "event gallery"]),
 };
 
-const placeholders = [
+const galleryImages = [
   {
     src: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80",
     alt: "Concert crowd with stage lights",
@@ -35,19 +36,15 @@ export default function GalleryPage() {
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionReveal variant="down">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
-            Gallery
-          </p>
-          <h1 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
-            In the room
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-muted">
-            Placeholder imagery — swap for your own photography and video stills. Keep files web
-            optimized for speed.
-          </p>
+          <PageTitle
+            eyebrow="Gallery"
+            title="In the"
+            titleGradient="room"
+            subtitle="Live energy, venues, and moments from the booth and the dance floor."
+          />
         </SectionReveal>
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {placeholders.map((p, i) => (
+          {galleryImages.map((p, i) => (
             <SectionReveal key={p.src} delay={i * 0.05} variant={revealVariantFromIndex(i)}>
               <div className="relative overflow-hidden rounded-2xl border border-white/10">
                 <Image

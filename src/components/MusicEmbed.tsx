@@ -58,13 +58,9 @@ export function MusicEmbed({ mix, className }: MusicEmbedProps) {
           </div>
         ) : (
           <div className="rounded-xl border border-dashed border-white/15 bg-night/80 px-4 py-10 text-center">
-            <p className="text-sm font-medium text-zinc-300">Embed ready</p>
+            <p className="text-sm font-medium text-zinc-300">Player coming soon</p>
             <p className="mt-2 text-xs text-zinc-500">
-              Paste a SoundCloud, Spotify, or Mixcloud embed URL in{" "}
-              <code className="rounded bg-white/10 px-1.5 py-0.5 text-[11px] text-neon-blue">
-                src/data/mixes.ts
-              </code>{" "}
-              for this mix.
+              This mix will appear with a full player here once it&apos;s connected.
             </p>
           </div>
         )}

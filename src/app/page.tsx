@@ -57,8 +57,9 @@ export default function HomePage() {
             <SectionReveal variant="left" className="min-w-0 flex-1">
               <SectionHeading
                 eyebrow="Mixes & music"
-                title="Featured mixes"
-                subtitle="Floor-tested energy — embed your SoundCloud, Spotify, or Mixcloud players on the Mixes page when ready."
+                title="Featured"
+                titleGradient="mixes"
+                subtitle="Floor-tested energy — hear more on the Mixes page."
               />
             </SectionReveal>
             <SectionReveal variant="right" delay={0.05} className="shrink-0">
@@ -91,7 +92,8 @@ export default function HomePage() {
           <SectionReveal variant="down">
             <SectionHeading
               eyebrow="Bookings"
-              title="Built for your night"
+              title="Built for"
+              titleGradient="your night"
               subtitle="From intimate lounges to headline rooms — flexible formats, polished production, and a set that matches your crowd."
             />
           </SectionReveal>
@@ -125,7 +127,8 @@ export default function HomePage() {
           <SectionReveal variant="right">
             <SectionHeading
               eyebrow="Why Amber Jane"
-              title="Performance you can trust"
+              title="Performance"
+              titleGradient="you can trust"
             />
           </SectionReveal>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -154,10 +157,11 @@ export default function HomePage() {
             </PremiumMediaFrame>
           </SectionReveal>
           <SectionReveal variant="right">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">About</p>
-            <h2 className="mt-2 font-display text-3xl text-foreground sm:text-4xl">
-              Artist energy, professional execution
-            </h2>
+            <SectionHeading
+              eyebrow="About"
+              title="Artist energy,"
+              titleGradient="professional execution"
+            />
             <p className="mt-4 text-muted">
               Amber Jane builds sets with intention — tension, release, and moments that hit. From
               refined receptions to peak-hour clubs, the goal is simple: a night people remember.
@@ -186,7 +190,7 @@ export default function HomePage() {
               <SectionHeading
                 eyebrow="Experience"
                 title="Recent highlights"
-                subtitle="A snapshot of recent rooms — swap in your real credits anytime."
+                subtitle="A snapshot of recent rooms and formats."
               />
             </SectionReveal>
             <SectionReveal variant="right" delay={0.05} className="shrink-0">
@@ -219,7 +223,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <SectionReveal variant="down" className="min-w-0 flex-1">
-              <SectionHeading eyebrow="Testimonials" title="Proof on the floor" />
+              <SectionHeading eyebrow="Testimonials" title="Proof on" titleGradient="the floor" />
             </SectionReveal>
             <SectionReveal variant="up" delay={0.05} className="shrink-0">
               <Link
@@ -254,7 +258,8 @@ export default function HomePage() {
           <SectionReveal variant="left">
             <SectionHeading
               eyebrow="Contact"
-              title="Let’s plan your event"
+              title="Let's plan"
+              titleGradient="your event"
               subtitle={
                 <>
                   Tell us what you&apos;re dreaming up — we&apos;ll reply with availability and next

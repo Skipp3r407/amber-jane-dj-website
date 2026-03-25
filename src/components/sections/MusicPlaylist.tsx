@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
 import { SOUNDCLOUD_PLAYLIST, SOUNDCLOUD_PROFILE } from "@/data/soundcloudPlaylist";
 import { SectionReveal } from "@/components/SectionReveal";
+import { SectionHeading } from "@/components/SectionHeading";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
 
 function buildEmbedSrc(trackUrl: string) {
@@ -55,27 +56,26 @@ export function MusicPlaylist() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <SectionReveal variant="down">
-          <div className="text-center md:text-left">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">SoundCloud</p>
-            <h2
-              id="listen-heading"
-              className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
-            >
-              Listen
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-base text-muted md:mx-0">
-              Mixes, tributes, and reposts from{" "}
-              <a
-                href={SOUNDCLOUD_PROFILE}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neon-blue underline-offset-2 hover:underline"
-              >
-                Amber Jane on SoundCloud
-              </a>
-              — including collaborator uploads where tracks live on their pages.
-            </p>
-          </div>
+          <SectionHeading
+            headingId="listen-heading"
+            className="text-center md:text-left"
+            eyebrow="SoundCloud"
+            titleGradient="Listen"
+            subtitle={
+              <>
+                Mixes, tributes, and reposts from{" "}
+                <a
+                  href={SOUNDCLOUD_PROFILE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neon-blue underline-offset-2 hover:underline"
+                >
+                  Amber Jane on SoundCloud
+                </a>
+                — including collaborator uploads where tracks live on their pages.
+              </>
+            }
+          />
         </SectionReveal>
 
         <SectionReveal variant="up" delay={0.04} className="mt-2 block text-center text-xs text-zinc-500 md:text-left">

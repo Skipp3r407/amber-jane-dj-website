@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Waveform } from "@/components/Waveform";
 import { HERO_MEDIA_SRC, PremiumMediaFrame } from "@/components/PremiumMediaFrame";
 import { HeroPlayMixButton } from "@/components/music/HeroPlayMixButton";
+import { HeadlineTitle } from "@/components/HeadlineTitle";
 
 const trustChips = [
   "Private Events",
@@ -37,10 +38,13 @@ export function HeroSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
             Professional DJ · Live Events
           </p>
-          <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Turn Up the Energy
-            <span className="mt-1 block text-gradient-live">with Amber Jane</span>
-          </h1>
+          <HeadlineTitle
+            as="h1"
+            size="hero"
+            title="Turn Up the Energy"
+            titleGradient="with Amber Jane"
+            className="mt-4"
+          />
           <p className="mt-5 max-w-xl text-lg text-muted">
             Premium DJ experience for private parties, nightlife, weddings, and corporate events
             — custom sets, polished sound, and a dance floor that stays electric.

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { PageTitle } from "@/components/PageTitle";
+import { HeadlineTitle } from "@/components/HeadlineTitle";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { MusicEmbed } from "@/components/MusicEmbed";
 import { MusicCard } from "@/components/MusicCard";
@@ -22,25 +24,16 @@ export default function MixesPage() {
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionReveal variant="down">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">Mixes</p>
-          <h1 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
-            Music & signature sound
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-muted">
-            Featured mixes below — paste embed URLs in{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-neon-blue">
-              src/data/mixes.ts
-            </code>
-            . Optional MP3 demo: set{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-neon-blue">
-              NEXT_PUBLIC_MIX_DEMO_URL
-            </code>
-            .
-          </p>
+          <PageTitle
+            eyebrow="Mixes"
+            title="Music &"
+            titleGradient="signature sound"
+            subtitle="Featured mixes and full players from SoundCloud, Spotify, and more — browse below and hit play."
+          />
         </SectionReveal>
 
         <SectionReveal variant="left" className="mt-12 block rounded-3xl border border-white/10 bg-midnight/20 p-8 sm:p-10">
-          <h2 className="font-display text-xl text-foreground sm:text-2xl">Signature sound & genres</h2>
+          <HeadlineTitle as="h2" size="section" title="Signature sound" titleGradient="& genres" />
           <p className="mt-2 max-w-2xl text-sm text-muted">
             Sets are tailored to your crowd — these tags are a starting point for direction and mood.
           </p>
@@ -57,9 +50,9 @@ export default function MixesPage() {
 
         <div className="mt-14">
           <SectionReveal variant="right">
-            <h2 className="font-display text-xl text-foreground">Compact players</h2>
+            <HeadlineTitle as="h2" size="subsection" title="Compact" titleGradient="players" />
             <p className="mt-2 text-sm text-muted">
-              Alternate card layout — first card can use a direct MP3 URL for a lightweight demo.
+              Compact cards for a quick preview — tap the first card to play when a preview track is available.
             </p>
           </SectionReveal>
           <div className="mt-6 grid gap-6 md:grid-cols-3">

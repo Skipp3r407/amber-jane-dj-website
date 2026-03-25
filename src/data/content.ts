@@ -43,7 +43,7 @@ export const services = [
   },
 ] as const;
 
-/** Legacy shape for MusicCard on home — detailed mixes live in data/mixes.ts */
+/** Preview cards for the home page mixes strip */
 export const mixesPreview = [
   {
     id: "1",
@@ -89,7 +89,7 @@ export const testimonials = [
   },
 ] as const;
 
-/** Home / events preview strip — full calendar in data/eventsCalendar.ts */
+/** Home page events preview strip */
 export const events = [
   {
     title: "Pulse District — Main Room",

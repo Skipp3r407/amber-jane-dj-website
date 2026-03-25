@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { CalendarEvent } from "@/data/eventsCalendar";
 import { SectionReveal } from "@/components/SectionReveal";
+import { HeadlineTitle } from "@/components/HeadlineTitle";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
 
 type AvailabilityStripProps = {
@@ -20,9 +21,13 @@ export function AvailabilityStrip({ events }: AvailabilityStripProps) {
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
               Availability & upcoming
             </p>
-            <h2 className="mt-2 font-display text-2xl text-foreground sm:text-3xl">
-              On the calendar
-            </h2>
+            <HeadlineTitle
+              as="h2"
+              size="subsection"
+              title="On the"
+              titleGradient="calendar"
+              className="mt-2"
+            />
             <p className="mt-2 max-w-xl text-sm text-muted">
               Dates move fast — inquire early for peak weekends and festival season.
             </p>

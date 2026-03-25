@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { PageTitle } from "@/components/PageTitle";
 import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { faqItems } from "@/data/content";
@@ -16,13 +17,12 @@ export default function FaqPage() {
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <SectionReveal variant="left">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">FAQ</p>
-          <h1 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
-            Questions, answered
-          </h1>
-          <p className="mt-4 text-lg text-muted">
-            Straightforward — for anything custom, use the contact form or Amber Assistant.
-          </p>
+          <PageTitle
+            eyebrow="FAQ"
+            title="Questions,"
+            titleGradient="answered"
+            subtitle="Straightforward — for anything custom, use the contact form or Amber Assistant."
+          />
         </SectionReveal>
         <SectionReveal variant="right" delay={0.06} className="mt-12">
           <FAQAccordion items={faqItems} />

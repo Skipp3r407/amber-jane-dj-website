@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { PageTitle } from "@/components/PageTitle";
+import { HeadlineTitle } from "@/components/HeadlineTitle";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
 import { EventCard } from "@/components/EventCard";
 import { CTASection } from "@/components/CTASection";
@@ -18,25 +20,18 @@ export default function EventsPage() {
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionReveal variant="down">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
-            Events
-          </p>
-          <h1 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
-            Calendar & credibility
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-muted">
-            A living record of rooms and formats — swap in your real history in{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-neon-blue">
-              src/data/eventsCalendar.ts
-            </code>
-            .
-          </p>
+          <PageTitle
+            eyebrow="Events"
+            title="Calendar"
+            titleGradient="& credibility"
+            subtitle="Upcoming dates and past highlights — clubs, weddings, festivals, and private rooms."
+          />
         </SectionReveal>
 
         <section className="mt-14">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <SectionReveal variant="left" className="min-w-0">
-              <h2 className="font-display text-2xl text-foreground">Upcoming</h2>
+              <HeadlineTitle as="h2" size="subsection" titleGradient="Upcoming" />
               <p className="mt-1 text-sm text-muted">Dates and holds — inquire for similar slots.</p>
             </SectionReveal>
             <SectionReveal variant="right" delay={0.05} className="shrink-0">
@@ -65,7 +60,7 @@ export default function EventsPage() {
 
         <section className="mt-16">
           <SectionReveal variant="up">
-            <h2 className="font-display text-2xl text-foreground">Past shows</h2>
+            <HeadlineTitle as="h2" size="subsection" titleGradient="Past shows" />
             <p className="mt-1 text-sm text-muted">Highlights — proof on the floor.</p>
           </SectionReveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -84,7 +79,7 @@ export default function EventsPage() {
         </section>
 
         <SectionReveal variant="down" className="mt-16 block rounded-3xl border border-dashed border-white/15 bg-night/50 p-8 text-center">
-          <p className="font-display text-lg text-foreground">Gallery</p>
+          <HeadlineTitle as="h2" size="subsection" titleGradient="Gallery" align="center" />
           <p className="mt-2 text-sm text-muted">
             Add photography and video stills on the{" "}
             <Link href="/gallery" className="text-neon-blue hover:underline">

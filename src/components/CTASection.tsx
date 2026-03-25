@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { SectionReveal } from "@/components/SectionReveal";
+import { HeadlineTitle } from "@/components/HeadlineTitle";
 
 type CTASectionProps = {
   eyebrow?: string;
@@ -27,7 +28,13 @@ export function CTASection({
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,60,172,0.18),_transparent_55%)]" />
       <SectionReveal variant="up" className="relative mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20">
         <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">{eyebrow}</p>
-        <h2 className="mt-2 font-display text-3xl font-bold text-foreground sm:text-4xl">{title}</h2>
+        <HeadlineTitle
+          as="h2"
+          size="section"
+          titleGradient={title}
+          align="center"
+          className="mt-2 mx-auto max-w-3xl"
+        />
         {subtitle ? (
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted">{subtitle}</p>
         ) : null}

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { PageTitle } from "@/components/PageTitle";
+import { HeadlineTitle } from "@/components/HeadlineTitle";
 import { CTASection } from "@/components/CTASection";
 import { site, buildKeywords } from "@/lib/site";
 
@@ -15,8 +17,7 @@ export default function AboutPage() {
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionReveal variant="down">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">About</p>
-          <h1 className="mt-3 font-display text-4xl text-white sm:text-5xl">Amber Jane</h1>
+          <PageTitle eyebrow="About" title="Amber" titleGradient="Jane" />
           <p className="mt-4 max-w-2xl text-lg text-zinc-400">
             I&apos;m a DJ first — obsessed with transitions, tension, release, and the moment the
             room ignites. From intimate ceremonies to peak-hour clubs, every set is built around
@@ -38,7 +39,7 @@ export default function AboutPage() {
             </div>
           </SectionReveal>
           <SectionReveal delay={0.1} variant="right">
-            <h2 className="font-display text-2xl text-white">The approach</h2>
+            <HeadlineTitle as="h2" size="subsection" title="The" titleGradient="approach" />
             <ul className="mt-4 space-y-3 text-zinc-400">
               <li>
                 • <span className="text-zinc-200">Crowd reading</span> — pacing the night so the

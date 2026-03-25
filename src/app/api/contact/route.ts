@@ -53,7 +53,7 @@ export async function POST(request: Request) {
       {
         ok: false,
         error:
-          "Email is not configured. Add RESEND_API_KEY to your environment (see .env.example).",
+          "We couldn’t send your message right now. Please try again in a moment or email us directly.",
       },
       { status: 503 },
     );

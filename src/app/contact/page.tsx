@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionReveal } from "@/components/SectionReveal";
+import { PageTitle } from "@/components/PageTitle";
 import { ContactForm } from "@/components/ContactForm";
 import { site, buildKeywords } from "@/lib/site";
 
@@ -21,12 +22,7 @@ export default function ContactPage() {
     <div className="pb-16 pt-10 sm:pb-24 sm:pt-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionReveal variant="down">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
-            Contact
-          </p>
-          <h1 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
-            Let&apos;s plan your event
-          </h1>
+          <PageTitle eyebrow="Contact" title="Let's plan" titleGradient="your event" />
           <p className="mt-4 max-w-2xl text-lg text-muted">
             Share your date, venue, guest count, and vibe. We typically respond within{" "}
             <span className="text-foreground">1–2 business days</span> with availability and next

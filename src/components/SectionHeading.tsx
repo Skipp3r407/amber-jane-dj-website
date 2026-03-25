@@ -1,21 +1,30 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { HeadlineTitle } from "@/components/HeadlineTitle";
 
 type SectionHeadingProps = {
   eyebrow?: string;
-  title: string;
+  title?: string;
+  /** Second line — same animated gradient as the home hero. */
+  titleGradient?: string;
   subtitle?: ReactNode;
   align?: "left" | "center";
   className?: string;
+  /** Sets `id` on the heading for `aria-labelledby`. */
+  headingId?: string;
 };
 
 export function SectionHeading({
   eyebrow,
   title,
+  titleGradient,
   subtitle,
   align = "left",
   className,
+  headingId,
 }: SectionHeadingProps) {
+  const hasTitle = Boolean(title?.trim()) || Boolean(titleGradient?.trim());
+
   return (
     <div
       className={cn(
@@ -26,14 +35,17 @@ export function SectionHeading({
       {eyebrow ? (
         <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">{eyebrow}</p>
       ) : null}
-      <h2
-        className={cn(
-          "mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl",
-          align === "center" && "mx-auto max-w-3xl",
-        )}
-      >
-        {title}
-      </h2>
+      {hasTitle ? (
+        <HeadlineTitle
+          id={headingId}
+          as="h2"
+          size="section"
+          title={title}
+          titleGradient={titleGradient}
+          align={align}
+          className={cn("mt-2", align === "center" && "mx-auto max-w-3xl")}
+        />
+      ) : null}
       {subtitle ? (
         <div
           className={cn(
