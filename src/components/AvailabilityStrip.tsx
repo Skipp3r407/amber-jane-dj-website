@@ -5,7 +5,6 @@ import type { CalendarEvent } from "@/data/eventsCalendar";
 import { SectionReveal } from "@/components/SectionReveal";
 import { HeadlineTitle } from "@/components/HeadlineTitle";
 import { revealVariantFromIndex } from "@/lib/revealVariants";
-import { SITE_MAIN_BLEED, SITE_MAIN_INNER, SITE_PURPLE_BAR } from "@/lib/siteBleed";
 
 type AvailabilityStripProps = {
   events: CalendarEvent[];
@@ -15,8 +14,8 @@ export function AvailabilityStrip({ events }: AvailabilityStripProps) {
   if (events.length === 0) return null;
 
   return (
-    <section className={`relative ${SITE_PURPLE_BAR} ${SITE_MAIN_BLEED}`}>
-      <div className={`${SITE_MAIN_INNER} py-10`}>
+    <section className="relative border-y border-white/10 bg-midnight/45">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <SectionReveal variant="left" className="min-w-0 flex-1">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-neon-blue">
