@@ -25,6 +25,15 @@ export function TurntableCursor() {
   const lastEmitRef = useRef(0);
   const lastRainRef = useRef(0);
   const hoveredSectionRef = useRef<DOMRect | null>(null);
+  const platterAngleRef = useRef(0);
+  const platterSpeedRef = useRef(1.05);
+  const platterDirRef = useRef<1 | -1>(1);
+  const platterFlipAtRef = useRef(0);
+  const armAngleRef = useRef(34);
+  const armTargetRef = useRef(34);
+  const armRetargetAtRef = useRef(0);
+  const wobbleRef = useRef(0);
+  const lastTickRef = useRef(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -41,7 +50,7 @@ export function TurntableCursor() {
     return () => {
       document.documentElement.classList.remove("turntable-cursor-active");
     };
-  }, [enabled]);
+  }, [enabled, reduce]);
 
   useEffect(() => {
     if (!enabled) return;
@@ -50,6 +59,29 @@ export function TurntableCursor() {
 
     const tick = () => {
       if (stop) return;
+      const now = performance.now();
+      const dt = lastTickRef.current ? Math.min(0.05, (now - lastTickRef.current) / 1000) : 1 / 60;
+      lastTickRef.current = now;
+      const frame = dt * 60;
+
+      if (!reduce) {
+        if (now > platterFlipAtRef.current) {
+          platterDirRef.current = Math.random() > 0.5 ? 1 : -1;
+          platterSpeedRef.current = 0.72 + Math.random() * 0.88;
+          platterFlipAtRef.current = now + 520 + Math.random() * 980;
+        }
+        platterAngleRef.current += platterDirRef.current * platterSpeedRef.current * frame;
+        wobbleRef.current += (Math.random() - 0.5) * 0.28 * frame;
+        wobbleRef.current *= 0.87;
+        wobbleRef.current = Math.max(-3.5, Math.min(3.5, wobbleRef.current));
+
+        if (now > armRetargetAtRef.current) {
+          armTargetRef.current = 18 + Math.random() * 32;
+          armRetargetAtRef.current = now + 360 + Math.random() * 680;
+        }
+        armAngleRef.current += (armTargetRef.current - armAngleRef.current) * 0.09 * frame;
+      }
+
       setSparkles((prev) =>
         prev
           .map((s) => ({
@@ -150,7 +182,7 @@ export function TurntableCursor() {
             top: s.y,
             width: s.size,
             height: s.size,
-            opacity: Math.max(0, s.life * 0.8),
+            opacity: Math.max(0, s.life * 0.64),
             transform: "translate(-50%, -50%)",
             background:
               "radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,60,172,0.85) 35%, rgba(123,44,255,0.25) 100%)",
@@ -165,18 +197,28 @@ export function TurntableCursor() {
         style={{
           left: pos.x,
           top: pos.y,
-          opacity: visible ? 1 : 0,
+          opacity: visible ? 0.8 : 0,
           transform: "translate(-50%, -50%)",
         }}
         aria-hidden
       >
         <div className="relative h-12 w-12">
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-neon-pink/45 to-neon-purple/55 blur-md" />
-          <div className="absolute inset-[3px] animate-spin rounded-full border border-white/15 bg-[radial-gradient(circle_at_30%_30%,rgba(70,70,85,0.95),rgba(8,8,10,0.96)_66%)] shadow-[0_0_14px_rgba(255,60,172,0.35),0_0_26px_rgba(123,44,255,0.32)] [animation-duration:2.2s] [animation-timing-function:linear]">
+          <div
+            className="absolute inset-[3px] rounded-full border border-white/15 bg-[radial-gradient(circle_at_30%_30%,rgba(70,70,85,0.95),rgba(8,8,10,0.96)_66%)] shadow-[0_0_14px_rgba(255,60,172,0.35),0_0_26px_rgba(123,44,255,0.32)]"
+            style={{
+              transform: `rotate(${platterAngleRef.current}deg) translateX(${wobbleRef.current * 0.11}px)`,
+            }}
+          >
             <div className="absolute inset-[7px] rounded-full border border-white/10" />
             <div className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/70 ring-2 ring-neon-purple/45" />
           </div>
-          <div className="absolute right-[5px] top-[8px] h-[19px] w-[3px] rotate-[35deg] rounded-full bg-zinc-100/85 shadow-[0_0_8px_rgba(255,255,255,0.35)]" />
+          <div
+            className="absolute right-[5px] top-[8px] h-[19px] w-[3px] origin-bottom rounded-full bg-zinc-100/85 shadow-[0_0_8px_rgba(255,255,255,0.35)]"
+            style={{
+              transform: `rotate(${armAngleRef.current}deg)`,
+            }}
+          />
           <div className="absolute right-[11px] top-[20px] h-1.5 w-1.5 rounded-full bg-neon-pink shadow-[0_0_8px_rgba(255,60,172,0.7)]" />
         </div>
       </div>
