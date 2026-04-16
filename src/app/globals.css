@@ -82,3 +82,33 @@ body {
     background-position: 0% 50%;
   }
 }
+
+/* Desktop custom cursor mode (enabled by TurntableCursor). */
+.turntable-cursor-active,
+.turntable-cursor-active * {
+  cursor: none !important;
+}
+
+/* Neon scrollbar (pink -> purple) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b23cff #121218;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, rgba(18, 18, 24, 0.95), rgba(10, 10, 14, 0.95));
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff3cac 0%, #7b2cff 100%);
+  border-radius: 999px;
+  border: 2px solid rgba(10, 10, 14, 0.9);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff5ab8 0%, #9151ff 100%);
+}

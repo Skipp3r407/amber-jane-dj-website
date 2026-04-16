@@ -1,6 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { InteractiveDjBackground } from "@/components/InteractiveDjBackground";
+import { TurntableCursor } from "@/components/TurntableCursor";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
@@ -21,6 +23,8 @@ export function SiteMusicShell({ children }: { children: ReactNode }) {
 
   return (
     <HomeMusicProvider audioUrl={audioUrl} trackTitle={trackTitle}>
+      <InteractiveDjBackground />
+      <TurntableCursor />
       <Navbar />
       <main className="relative z-10">{children}</main>
       <Footer />
